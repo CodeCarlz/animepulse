@@ -1,7 +1,7 @@
 import { popularData } from "@/utils/popular";
 import React from "react";
 
-const Updatedanime = ({cardTitle , image, title, type, duration}) => {
+const Updatedanime = ({ cardTitle, image, title, type, duration }) => {
   const anime = popularData.results.slice(0, 5);
   console.log(anime);
 
@@ -12,7 +12,7 @@ const Updatedanime = ({cardTitle , image, title, type, duration}) => {
       </div>
       <div className=" flex flex-col p-2 gap-3">
         {anime.map((element, index) => (
-          <div className="flex gap-5 ml-4 md:ml-6 lg:ml-8">
+          <div key={index} className="flex gap-5 ml-4 md:ml-6 lg:ml-8">
             <img src={element.image} alt="" className="h-20 rounded-lg" />
             <div className="flex flex-col justify-center text-white">
               <p className="text-lg font-medium">{element.title.english}</p>
