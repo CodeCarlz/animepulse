@@ -26,7 +26,7 @@ console.log(randomAnime);
 
 const Home = () => {
   return (
-    <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_70px] min-h-screen  bg-gray-900 overflow-hidden">
+    <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] min-h-screen  bg-gray-900 overflow-hidden">
       <Header />
       <main className="max-w-[100vw] ">
         <ul>
@@ -44,8 +44,12 @@ const Home = () => {
         </div>
       </main>
 
-      <footer className="bg-blue-500 flex flex-col justify-center items-center gap-5 lg:gap-2">
-        <ul className="flex gap-8 text-sm text-white">
+      <footer
+        className="relative bg-[#1e1a1b] flex flex-col justify-center items-center gap-5 lg:gap-2 bg-cover lg:bg-contain bg-right bg-no-repeat"
+        style={{ backgroundImage: `url(/onepunchs.png)` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-transparent z-3 "></div>
+        <ul className="flex gap-8 text-sm text-white z-10">
           <li>
             <Link href={""}>Terms of service</Link>
           </li>
@@ -56,7 +60,7 @@ const Home = () => {
             <Link href={""}>Contact</Link>
           </li>
         </ul>
-        <div className="max-w-sm lg:max-w-7xl text-white">
+        <div className="max-w-sm lg:max-w-7xl text-white z-10">
           <p className="text-sm lg:text-lg">
             Anime Pulse does not store any files on our server, we only linked
             to the media which is hosted on 3rd party services.

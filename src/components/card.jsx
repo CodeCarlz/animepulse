@@ -36,12 +36,12 @@ const Card = () => {
         {/* CARD */}
         {animeList.map((element, index) => (
           <div
-            className="flex h-[300px] w-[400px] min-w-[268px] rounded-xl overflow-hidden ml-2 mr-3"
+            className="flex h-[300px] w-[300px] min-w-[267px] rounded-xl overflow-hidden ml-2 mr-3"
             key={index}
           >
             <div className="flex flex-col justify-center items-center gap-2 py-5 bg-gradient-to-r from-gray-700">
-              <p className="flex items-end white flex-1 h-screen w-[50px] writing-mode-vertical-rl whitespace-nowrap pb-5 ">
-                <span className="-rotate-90 max-w-full text-md">
+              <p className="flex items-end white flex-1 h-screen w-[50px] writing-mode-vertical-rl whitespace-nowrap pb-5 max-h-[90vh] overflow-hidden">
+                <span className="-rotate-90 max-w-full text-md ">
                   {element.title.english}
                 </span>
               </p>
