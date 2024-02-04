@@ -1,8 +1,6 @@
-import { popularData } from "@/utils/popular";
 import React from "react";
 
-const Updatedanime = ({ cardTitle, image, title, type, duration }) => {
-  const anime = popularData.results.slice(0, 5);
+const Updatedanime = ({ cardTitle, image, title, type, duration, anime }) => {
   console.log(anime);
 
   return (
@@ -12,15 +10,29 @@ const Updatedanime = ({ cardTitle, image, title, type, duration }) => {
       </div>
       <div className=" flex flex-col p-2 gap-3">
         {anime.map((element, index) => (
-          <div key={index} className="flex gap-5 ml-4 md:ml-6 lg:ml-8">
-            <img src={element.image} alt="" className="h-20 rounded-lg" />
+          <div
+            key={index}
+            className="flex gap-5 ml-4 md:ml-6 lg:ml-8 min-w-[230px]"
+          >
+            <img
+              src={element.image}
+              alt=""
+              className="h-20 rounded-lg max-w-[60px]"
+            />
             <div className="flex flex-col justify-center text-white">
-              <p className="text-lg font-medium">{element.title.english}</p>
+              <p className="text-lg font-medium max-h-[60px] max-w-[25ch] overflow-hidden">
+                {element.title.english
+                  ? element.title.english
+                  : element.title.romaji
+                  ? element.title.romaji
+                  : element.title.native}
+              </p>
               <div className="flex gap-3 md:gap-4 lg:gap-5 text-sm ">
                 <p>{element.type}</p>
-                <p>EP1</p>
+                <p>EP{element.episodeNumber}</p>
                 <p>
-                  {element.duration} <span>min</span>{" "}
+                  {element.duration ? element.duration : "N/A"}{" "}
+                  {element.duration ? <span>min</span> : ""}
                 </p>
               </div>
             </div>

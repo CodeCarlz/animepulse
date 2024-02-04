@@ -11,9 +11,18 @@ import Head from "next/head";
 import Header from "@/components/header";
 import Card from "@/components/card";
 import Updatedanime from "@/components/updatedAnime";
+import { popularData } from "@/utils/popularData";
+import { recentData } from "@/utils/recentData";
+import { trendingData } from "@/utils/trendingData";
+import { randomData } from "@/utils/randomData";
 
 const animeList = data.results;
-console.log(animeList);
+const anime = popularData.results.slice(0, 5);
+const recentAnime = recentData.results.slice(0, 5);
+const trendingAnime = trendingData.results.slice(0, 5);
+const randomAnime = randomData.results.slice(0, 5);
+console.log(recentAnime);
+console.log(randomAnime);
 
 const Home = () => {
   return (
@@ -25,12 +34,12 @@ const Home = () => {
         </ul>
 
         <Card />
-        <div className=" flex justify-center items-center h-[1000px] md:h-[75vh] px-5">
+        <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[76vh] px-5">
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw]">
-            <Updatedanime cardTitle={"Recent Rlease"} />
-            <Updatedanime cardTitle={"New Release"} />
-            <Updatedanime cardTitle={"Top Airing"} />
-            <Updatedanime cardTitle={"Completed"} />
+            <Updatedanime cardTitle={"Recent Rlease"} anime={recentAnime} />
+            <Updatedanime cardTitle={"New Release"} anime={recentAnime} />
+            <Updatedanime cardTitle={"Trending"} anime={trendingAnime} />
+            <Updatedanime cardTitle={"Random Anime"} anime={randomAnime} />
           </div>
         </div>
       </main>

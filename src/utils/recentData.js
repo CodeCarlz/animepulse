@@ -1,4 +1,4 @@
-const recentAnime = {
+export const recentData = {
   currentPage: 1,
   totalResults: 25,
   results: [
