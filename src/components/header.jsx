@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header
       className={`flex h-[50px] lg:h-[70px]  justify-between px-10 ${
-        scrolled ? "bg-gradient-to-br from-pink-900 " : ""
+        scrolled ? "bg-gradient-to-t from-pink-900 " : ""
       }`}
     >
       <div className="flex gap-5 items-center">
