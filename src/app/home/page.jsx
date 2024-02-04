@@ -45,7 +45,7 @@ const Home = () => {
       </main>
 
       <footer
-        className="relative bg-[#1e1a1b] flex flex-col justify-center items-center gap-5 lg:gap-2 bg-cover lg:bg-contain bg-right bg-no-repeat"
+        className="relative bg-[#1e1a1b] flex flex-col justify-center items-center gap-5 lg:gap-2 bg-cover lg:bg-contain bg-top lg:bg-right bg-no-repeat"
         style={{ backgroundImage: `url(/onepunchs.png)` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-transparent z-3 "></div>
