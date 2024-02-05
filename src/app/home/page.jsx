@@ -15,6 +15,7 @@ import { recentData } from "@/utils/recentData";
 import { trendingData } from "@/utils/trendingData";
 import { randomData } from "@/utils/randomData";
 import ListCard from "@/components/listCard";
+import Recentepisode from "@/components/recentEpisode";
 
 const animeList = data.results;
 const anime = popularData.results;
@@ -40,7 +41,7 @@ const Home = () => {
             <ListCard cardTitle={"Random Anime"} anime={randomAnime} />
           </div>
         </div>
-        <div className="bg-blue-300  text-white h-[1000px]">a</div>
+        <Recentepisode />
       </main>
 
       <footer
