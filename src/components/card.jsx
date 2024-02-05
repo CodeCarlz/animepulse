@@ -59,14 +59,14 @@ const Card = () => {
           </div>
         ))}
       </div>
-      {/* <div className="z-10 flex flex-col gap-3 absolute">
+      <div className="z-10 flex flex-col gap-3">
         <Button variant="nextButton" size="xl" onClick={scrollLeft}>
           <MdNavigateNext />
         </Button>
         <Button variant="nextButton" size="xl">
           <MdNavigateNext className="rotate-180" onClick={scrollRight} />
         </Button>
-      </div> */}
+      </div>
     </div>
   );
 };

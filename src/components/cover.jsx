@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import Link from "next/link";
 import Button from "./button";
-import { MdNavigateNext } from "react-icons/md";
+
 
 const Cover = ({ element, scrollNext, scrollPrev }) => {
   console.log(element);
@@ -20,7 +20,7 @@ const Cover = ({ element, scrollNext, scrollPrev }) => {
       "
         >
           <h1 className="text-green-400 text-xl lg:text-3xl">
-            #{element.rating} <span className="text-pink-600">Spotlight</span>
+            {element.rating} <span className="text-pink-600">Spotlight</span>
           </h1>
           <h1 className="text-white text-2xl lg:text-4xl font-semibold tracking-wide">
             {element.title.english}
@@ -71,14 +71,6 @@ const Cover = ({ element, scrollNext, scrollPrev }) => {
           <Link href={"#"}>
             <Button>Watch Now</Button>
           </Link>
-        </div>
-        <div className="z-10 flex flex-col gap-3">
-          <Button variant="nextButton" size="sm" onClick={scrollNext}>
-            <MdNavigateNext />
-          </Button>
-          <Button variant="nextButton" size="sm" onClick={scrollPrev}>
-            <MdNavigateNext className="rotate-180" />
-          </Button>
         </div>
       </div>
     </>

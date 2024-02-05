@@ -10,19 +10,17 @@ import Emblacarousel from "@/components/embacarousel";
 import Head from "next/head";
 import Header from "@/components/header";
 import Card from "@/components/card";
-import Updatedanime from "@/components/updatedAnime";
 import { popularData } from "@/utils/popularData";
 import { recentData } from "@/utils/recentData";
 import { trendingData } from "@/utils/trendingData";
 import { randomData } from "@/utils/randomData";
+import ListCard from "@/components/listCard";
 
 const animeList = data.results;
-const anime = popularData.results.slice(0, 5);
-const recentAnime = recentData.results.slice(0, 5);
-const trendingAnime = trendingData.results.slice(0, 5);
-const randomAnime = randomData.results.slice(0, 5);
-console.log(recentAnime);
-console.log(randomAnime);
+const anime = popularData.results;
+const recentAnime = recentData.results;
+const trendingAnime = trendingData.results;
+const randomAnime = randomData.results;
 
 const Home = () => {
   return (
@@ -34,14 +32,15 @@ const Home = () => {
         </ul>
 
         <Card />
-        <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[76vh] px-5">
+        <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[80vh] px-5 pb-10">
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw]">
-            <Updatedanime cardTitle={"Recent Rlease"} anime={recentAnime} />
-            <Updatedanime cardTitle={"New Release"} anime={recentAnime} />
-            <Updatedanime cardTitle={"Trending"} anime={trendingAnime} />
-            <Updatedanime cardTitle={"Random Anime"} anime={randomAnime} />
+            <ListCard cardTitle={"Recent Rlease"} anime={recentAnime} />
+            <ListCard cardTitle={"New Release"} anime={anime} />
+            <ListCard cardTitle={"Trending"} anime={trendingAnime} />
+            <ListCard cardTitle={"Random Anime"} anime={randomAnime} />
           </div>
         </div>
+        <div className="bg-blue-300  text-white h-[1000px]">a</div>
       </main>
 
       <footer
