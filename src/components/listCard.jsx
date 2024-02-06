@@ -9,7 +9,7 @@ const ListCard = ({ cardTitle, image, title, type, duration, anime }) => {
         {cardTitle}
       </div>
       <div className=" flex flex-col p-2 gap-3">
-        {anime.slice(0, 5).map((element, index) => (
+        {anime.map((element, index) => (
           <div
             key={index}
             className="flex gap-5 ml-4 md:ml-6 lg:ml-8 min-w-[230px]"

@@ -18,10 +18,10 @@ import ListCard from "@/components/listCard";
 import Recentepisode from "@/components/recentEpisode";
 
 const animeList = data.results;
-const anime = popularData.results;
-const recentAnime = recentData.results;
-const trendingAnime = trendingData.results;
-const randomAnime = randomData.results;
+const anime = popularData.results.slice(0, 5);
+const recentAnime = recentData.results.slice(0, 5);
+const trendingAnime = trendingData.results.slice(0, 5);
+const randomAnime = randomData.results.slice(0, 5);
 
 const Home = () => {
   return (
