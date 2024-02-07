@@ -6,11 +6,11 @@ console.log(recentData.results.slice(0, 10));
 const recentAnime = recentData.results.slice(0, 10);
 const Recentepisode = () => {
   return (
-    <div className="relative grid grid-rows-[1fr_800px] lg:grid-cols-[1fr_600px] gap-20 lg:gap-2 bg-red-500 lg:h-[800px] px-2">
+    <div className="relative grid grid-rows-[1fr_800px] lg:grid-cols-[1fr_600px] gap-20 lg:gap-2  lg:h-[800px] px-2">
       <div className=" flex flex-col gap-2 h-full ">
         <p className=" text-2xl text-pink-600">Recent Episode</p>
         <div
-          className="bg-green-100 text-white  h-[1200px] w-[92vw] grid grid-cols-2 
+          className=" text-white  h-[1200px] w-[92vw] grid grid-cols-2 
         sm:grid-cols-2  sm:h-[1200px] sm:w-[95vw]
         md:grid-cols-5  md:h-[650px]
         lg:grid-cols-5  lg:h-[740px] lg:w-[70vw]
@@ -21,7 +21,7 @@ const Recentepisode = () => {
               className=" text-white flex flex-col h-[170px] sm:h-[180px]  md:h-[320px]  lg:h-[360px] "
               key={index}
             >
-              <div className="bg-green-400 h-full w-full relative ">
+              <div className=" h-full w-full relative ">
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent z-3 "></div>
                 <img src={element.image} alt="" className="h-full w-full " />
                 {/* <p className="absolute left-5 bottom-0 font-extrabold">CC 5</p> */}
@@ -48,7 +48,7 @@ const Recentepisode = () => {
           ))}
         </div>
       </div>
-      <div className="bg-blue-200 flex flex-col gap-2  mr-5">
+      <div className=" flex flex-col gap-2  mr-5">
         <h1 className="text-2xl text-pink-600">Most Viewed</h1>
         <div className=" flex flex-col gap-3 bg-gray-800 py-2">
           {recentAnime.slice(0, 8).map((element, index) => (
