@@ -10,12 +10,17 @@ import { IoIosSearch, IoIosMenu } from "react-icons/io";
 const page = ({ params }) => {
   const { id, anime } = params;
   console.log(animeInfo);
-  {
-    animeInfo.episodes.map((element, index) => {
-      console.log("id:", id);
-      console.log("element.number:", element.number);
-    });
-  }
+
+  const dateFormat = new Date(
+    animeInfo.startDate.year,
+    animeInfo.startDate.month - 1,
+    animeInfo.startDate.day
+  ).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
@@ -94,7 +99,9 @@ const page = ({ params }) => {
                   />
                 </div>
                 <div className=" h-[70px] flex flex-col gap-2 px-2">
-                  <p className="text-2xl text-pink-600">One Piece</p>
+                  <p className="text-2xl text-pink-600">
+                    {animeInfo.title.english}
+                  </p>
                   <div className="flex gap-2 text-sm">
                     <p>PG-13</p>
                     <div className="flex">
@@ -123,22 +130,21 @@ const page = ({ params }) => {
 
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Date aired:</p>
-                  <p className="">Oct 20, 1999</p>
+                  <p className="">{dateFormat}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Status:</p>
-                  <p className="">Releasing</p>
+                  <p className="">{animeInfo.status}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Genre:</p>
-                  <p className="">
-                    Action, Adventure, Comedy, Drama, Fantasy, Shounen, Super
-                    power, isekai
-                  </p>
+                  {animeInfo.genres.map((element, index) => (
+                    <p key={index}>{element}</p>
+                  ))}
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Country:</p>
-                  <p className="">Japan</p>
+                  <p className="">{animeInfo.countryOfOrigin}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Scores:</p>
@@ -146,19 +152,19 @@ const page = ({ params }) => {
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Premiered:</p>
-                  <p className="">Fall 1999</p>
+                  <p className="">{animeInfo.releaseDate}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Duration:</p>
-                  <p className="">24 min</p>
+                  <p className="">{animeInfo.duration} min</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Episode:</p>
-                  <p className="">?</p>
+                  <p className="">{animeInfo.totalEpisodes}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Studios:</p>
-                  <p className="">Toel Anime</p>
+                  <p className="">{animeInfo.studios}</p>
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Producer:</p>
