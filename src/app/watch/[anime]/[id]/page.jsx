@@ -41,7 +41,7 @@ const page = ({ params }) => {
                         className="w-[70px] h-[20px] bg-gray-700 text-white text-end pr-2"
                       >
                         {animeInfo.episodes.map((element, index) => (
-                          <option value="">{element.number}</option>
+                          <option value="" key={index}>{element.number}</option>
                         ))}
                       </select>
                     </div>
