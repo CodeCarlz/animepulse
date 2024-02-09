@@ -21,7 +21,6 @@ const page = ({ params }) => {
     year: "numeric",
   });
 
-
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
       <Header isScrolled={"bg-gradient-to-t from-pink-900"} />
@@ -168,7 +167,7 @@ const page = ({ params }) => {
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Producer:</p>
-                  <p className="">Shueisha, fuji TV, TAP</p>
+                  <p className="">Shueisha, fuji TV, TA</p>
                 </div>
               </div>
             </div>
