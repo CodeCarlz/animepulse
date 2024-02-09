@@ -167,7 +167,7 @@ const page = ({ params }) => {
                 </div>
                 <div className="flex gap-1 items-start">
                   <p className="text-pink-600">Producer:</p>
-                  <p className="">Shueisha, fuji TV, TA</p>
+                  <p className="">Shueisha, fuji TV, TAPs</p>
                 </div>
               </div>
             </div>
