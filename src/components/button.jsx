@@ -9,7 +9,7 @@ const buttonVariants = cva(
       variant: {
         primary: "text-white transition-colors bg-red-500 bg-pink-600 z-10",
         secondary: "text-white",
-        nextButton: "bg-gray-800 opacity-80 text-white  rounded-md text-2xl",
+        nextButton: "bg-gray-800 opacity-80 text-white  rounded-md",
       },
       size: {
         default: "py-1 px-2 text-sm",

@@ -18,7 +18,7 @@ const Recentepisode = () => {
         >
           {recentAnime.map((element, index) => (
             <div
-              className=" text-white flex flex-col h-[170px] sm:h-[180px]  md:h-[320px]  lg:h-[360px] "
+              className=" text-white flex flex-col h-[170px] sm:h-[180px]  md:h-[300px] "
               key={index}
             >
               <div className=" h-full w-full relative ">

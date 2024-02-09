@@ -1,8 +1,9 @@
 "use client";
 import { data } from "@/utils/data";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { MdNavigateNext } from "react-icons/md";
 import Button from "./button";
+import Link from "next/link";
 
 const Card = () => {
   const animeList = data.results;
@@ -26,6 +27,8 @@ const Card = () => {
     }
   };
 
+  console.log(data);
+
   return (
     <div className="relative max-w-[full]  text-white h-[25rem] flex justify-start items-center gap-2 md:gap-4 lg:gap-6 transition delay-5000 overflow-hidden">
       <p className="absolute top-1 left-7 text-pink-600 text-3xl">Trending</p>
@@ -34,8 +37,13 @@ const Card = () => {
         ref={scrollContainerRef}
       >
         {/* CARD */}
+
         {animeList.map((element, index) => (
-          <div
+          <Link
+            href={`/watch/${element.title.english
+              .replace(/\s/g, "-")
+              .replace(/.*: /, "")
+              .toLocaleLowerCase()}/${element.id}`}
             className="flex h-[300px] w-[300px] min-w-[267px] rounded-xl overflow-hidden ml-2 mr-3"
             key={index}
           >
@@ -56,7 +64,7 @@ const Card = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="z-10 flex flex-col gap-3">
