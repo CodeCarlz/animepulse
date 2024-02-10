@@ -13,8 +13,8 @@ const Watchanimeinfo = () => {
   });
   return (
     <div className="bg-gray-700  2xl:w-[450px] flex flex-col text-sm">
-      <div className="h-[380px]  flex flex-col gap-3 text-white">
-        <div className="h-[230px] sm:max-w-[500px] bg-gray-800 flex justify-center">
+      <div className="h-[380px] md:h-[250px] 2xl:h-[430px] flex flex-col md:flex-row 2xl:flex-col gap-3 md:items-center text-white">
+        <div className="h-[230px] max-w-[150px] bg-gray-800 flex justify-center">
           <img src="/one_piece.jpg" alt="" className="h-full w-screen" />
         </div>
         <div className=" h-[70px] flex flex-col gap-2 px-2">
@@ -37,53 +37,61 @@ const Watchanimeinfo = () => {
           </div>
         </div>
       </div>
-      <div className="text-white flex-1 px-2">
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Type:</p>
-          <p className="">TV</p>
-        </div>
+      <div className="text-white flex flex-col md:flex-row md:justify-center xl:justify-start 2xl:flex-col md:gap-10 2xl:gap-0 flex-1 px-2">
+        <div>
+          <div className="flex gap-1 items-start">
+            <p className="text-pink-600">Type:</p>
+            <p className="">TV</p>
+          </div>
 
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Date aired:</p>
-          <p className="">{dateFormat}</p>
+          <div className="flex gap-1 items-start">
+            <p className="text-pink-600">Date aired:</p>
+            <p className="">{dateFormat}</p>
+          </div>
+          <div className="flex gap-1 items-start">
+            <p className="text-pink-600">Status:</p>
+            <p className="">{animeInfo.status}</p>
+          </div>
+          <div className="flex gap-1 items-start">
+            <p className="text-pink-600">Genre:</p>
+            {animeInfo.genres.map((element, index) => (
+              <p key={index}>{element}</p>
+            ))}
+          </div>
         </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Status:</p>
-          <p className="">{animeInfo.status}</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Genre:</p>
-          {animeInfo.genres.map((element, index) => (
-            <p key={index}>{element}</p>
-          ))}
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Country:</p>
-          <p className="">{animeInfo.countryOfOrigin}</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Scores:</p>
-          <p className="">8,71 /1,302,298 views</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Premiered:</p>
-          <p className="">{animeInfo.releaseDate}</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Duration:</p>
-          <p className="">{animeInfo.duration} min</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Episode:</p>
-          <p className="">{animeInfo.totalEpisodes}</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Studios:</p>
-          <p className="">{animeInfo.studios}</p>
-        </div>
-        <div className="flex gap-1 items-start">
-          <p className="text-pink-600">Producer:</p>
-          <p className="">Shueisha, fuji TV, TAPs</p>
+        <div className="flex flex-col lg:flex-row lg:gap-5 2xl:flex-col 2xl:gap-0">
+          <div className="">
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Country:</p>
+              <p className="">{animeInfo.countryOfOrigin}</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Scores:</p>
+              <p className="">8,71 /1,302,298 views</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Premiered:</p>
+              <p className="">{animeInfo.releaseDate}</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Duration:</p>
+              <p className="">{animeInfo.duration} min</p>
+            </div>
+          </div>
+          <div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Episode:</p>
+              <p className="">{animeInfo.totalEpisodes}</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Studios:</p>
+              <p className="">{animeInfo.studios}</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Producer:</p>
+              <p className="">Shueisha, fuji TV, TAPs</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
