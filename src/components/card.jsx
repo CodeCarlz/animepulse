@@ -5,7 +5,7 @@ import { MdNavigateNext } from "react-icons/md";
 import Button from "./button";
 import Link from "next/link";
 
-const Card = () => {
+const Card = ({ cardTitle }) => {
   const animeList = data.results;
   const scrollContainerRef = useRef(null);
 
@@ -31,7 +31,9 @@ const Card = () => {
 
   return (
     <div className="relative max-w-[full]  text-white h-[25rem] flex justify-start items-center gap-2 md:gap-4 lg:gap-6 transition delay-5000 overflow-hidden">
-      <p className="absolute top-1 left-7 text-pink-600 text-3xl">Trending</p>
+      <p className="absolute top-1 left-7 text-pink-600 text-3xl">
+        {cardTitle}
+      </p>
       <div
         className="scrollControl max-w-[85vw] md:max-w-[89vw] lg:max-w-[92vw] h-full flex items-center overflow-scroll ml-5  "
         ref={scrollContainerRef}
