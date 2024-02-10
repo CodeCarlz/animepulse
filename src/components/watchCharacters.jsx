@@ -26,10 +26,22 @@ const Watchcharacters = () => {
           Relate
         </Button>
       </div>
-      <div className="h-[1000px] w-[90vw] ml-5 mt-5  grid grid-cols-8 grid-rows-4 gap-2">
+      <div
+        className=" h-[1000px] w-[90vw] ml-0 mt-5 gap-2 grid grid-cols-4 grid-rows-7 
+      sm:grid-cols-5 sm:grid-rows-5 sm:h-[700px]
+      md:grid-cols-4 md:grid-rows-7 md:h-[1300px]
+      lg:grid-cols-5 lg:grid-rows-6 lg:h-[1200px]
+      xl:grid-cols-6 xl:grid-rows-5 xl:h-[1100px]
+      2xl:grid-cols-7 2xl:grid-rows-4 2xl:h-[1000px]
+      "
+      >
         {animeInfo.characters.map((element, index) => (
           <div
-            className={`h-[200px] w-[200px] hover:h-[210px] hover:w-[210px] text-white hover:text-pink-600`}
+            className={`h-[100px] w-[100px] hover:h-[110px] hover:w-[110px] text-white hover:text-pink-600
+            md:w-[150px] md:h-[150px] md:hover:w-[160px]  md:hover:h-[160px]
+            lg:w-[180px] lg:h-[180px] lg:hover:w-[190px]  lg:hover:h-[190px]
+            2xl:w-[200px] 2xl:h-[200px] 2xl:hover:w-[210px]  2xl:hover:h-[210px]
+            `}
             key={index}
           >
             <div
@@ -53,7 +65,7 @@ const Watchcharacters = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <p className="">{element.name.first}</p>
+              <p className="text-nowrap">{element.name.first}</p>
             </div>
           </div>
         ))}
