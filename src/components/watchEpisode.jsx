@@ -4,9 +4,9 @@ import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import Button from "@/components/button";
 
-const Watchepisode = ({id}) => {
+const Watchepisode = ({ id }) => {
   return (
-    <div className="bg-gray-700 w-[300px]">
+    <div className="bg-gray-700 min-h-[500px] lg:min-h-[300px] xl:w-[300px]">
       <div className="bg-gray-800 h-[70px] px-4">
         <div className="text-lg text-white ">List of Episode</div>
         <div className="flex justify-between items-center">

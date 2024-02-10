@@ -17,8 +17,8 @@ const page = ({ params }) => {
       <Header isScrolled={"bg-gradient-to-t from-pink-900"} />
       <main>
         <div className="pt-[50px] lg:pt-[70px] flex justify-center">
-          <div className=" h-[750px] w-[95vw] flex  gap-5">
-            <div className="flex gap-1 w-[80vw]">
+          <div className=" h-[1800px] lg:h-[1600px] xl:h-[1300px] 2xl:h-[750px] w-[95vw] flex flex-col 2xl:flex-row gap-5">
+            <div className="flex flex-col-reverse xl:flex-row gap-1 3xl:w-[80vw]">
               {/* list of episode*/}
               <Watchepisode id={id} />
               {/* video player */}

@@ -1,21 +1,20 @@
-import React from 'react'
+import React from "react";
 import { animeInfo } from "@/utils/animeInfo";
 
-const Watchanimeinfo
- = () => {
-    const dateFormat = new Date(
-      animeInfo.startDate.year,
-      animeInfo.startDate.month - 1,
-      animeInfo.startDate.day
-    ).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
+const Watchanimeinfo = () => {
+  const dateFormat = new Date(
+    animeInfo.startDate.year,
+    animeInfo.startDate.month - 1,
+    animeInfo.startDate.day
+  ).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
   return (
-    <div className="bg-gray-700  w-[450px] flex flex-col text-sm">
+    <div className="bg-gray-700  2xl:w-[450px] flex flex-col text-sm">
       <div className="h-[380px]  flex flex-col gap-3 text-white">
-        <div className="h-[230px] bg-gray-800 flex justify-center">
+        <div className="h-[230px] sm:max-w-[500px] bg-gray-800 flex justify-center">
           <img src="/one_piece.jpg" alt="" className="h-full w-screen" />
         </div>
         <div className=" h-[70px] flex flex-col gap-2 px-2">
@@ -89,7 +88,6 @@ const Watchanimeinfo
       </div>
     </div>
   );
-}
+};
 
-export default Watchanimeinfo
-
+export default Watchanimeinfo;
