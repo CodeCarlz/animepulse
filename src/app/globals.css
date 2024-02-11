@@ -62,7 +62,7 @@ header.scrolled {
 }
 
 .hex-brick {
-  background: #b31a9#b31a999;
+  background: #db2777;
   width: 30px;
   height: 17px;
   position: absolute;
@@ -376,15 +376,15 @@ header.scrolled {
 
 @keyframes fade {
   0% {
-    background: #b31a99;
+    background: #db2777;
   }
 
   50% {
-    background: #b31a99;
+    background: #db2777;
   }
 
   100% {
-    background: #b31a99;
+    background: #db2777;
   }
 }
 
@@ -407,14 +407,14 @@ header.scrolled {
 
 @-webkit-keyframes fade {
   0% {
-    background: #b31a99;
+    background: #db2777;
   }
 
   50% {
-    background: #b31a99;
+    background: #db2777;
   }
 
   100% {
-    background: #b31a99;
+    background: #db2777;
   }
 }
