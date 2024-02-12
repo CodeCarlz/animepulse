@@ -51,6 +51,30 @@ header.scrolled {
   display: none;
 }
 
+.header-blur {
+  backdrop-filter: blur(20px); /* Adjust the blur value as needed */
+}
+
+.scrollDesign::-webkit-scrollbar {
+  width: 2vh;
+}
+
+.scrollDesign::-webkit-scrollbar-thumb {
+  background-color: #1f2937;
+}
+
+.scrollDesign::-webkit-scrollbar-track {
+  background-color: #2e3746;
+}
+
+.scrollDesign::-webkit-scrollbar-thumb:hover {
+  background-color: #1b2430;
+}
+
+.scrollDesign::-webkit-scrollbar-track:hover {
+  background-color: #2f3646;
+}
+
 .socket {
   width: 200px;
   height: 200px;
