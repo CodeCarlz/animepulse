@@ -1,129 +1,73 @@
-"use client";
-import Slider from "@/components/slider";
 import { data } from "@/utils/data";
-import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-import Button from "@/components/button";
-import Link from "next/link";
-import Cover from "@/components/cover";
+import React from "react";
 import Emblacarousel from "@/components/embacarousel";
-import Head from "next/head";
 import Header from "@/components/header";
-import Card from "@/components/card";
-import { popularData } from "@/utils/popularData";
-import { recentData } from "@/utils/recentData";
-import { trendingData } from "@/utils/trendingData";
-import { randomData } from "@/utils/randomData";
 import ListCard from "@/components/listCard";
 import Recentepisode from "@/components/recentEpisode";
 import Footer from "@/components/footer";
 import { axiosInstance } from "@/services/api";
-import Loading from "@/components/loading";
+import Scrollfunction from "@/components/scrollFunction";
+import {
+  POPULAR_ANIME,
+  RECENT_ANIME,
+  TRENDING_ANIME,
+} from "@/services/endpoint";
 
-const animeList = data.results;
-// const anime = popularData.results.slice(0, 5);
-// const trendingAnime = trendingData.results.slice(0, 5);
-// const randomAnime = randomData.results.slice(0, 5);
-
-const Home = () => {
-  const [recentAnime, SetrecentAnime] = useState();
-  const [trendingAnime, SettrendingAnime] = useState();
-  const [randomAnime, SetrandomAnime] = useState();
-  const [popularAnime, SetpopularAnime] = useState();
-  const [isLoading, SetisLoading] = useState(false);
-
-  const fetchRecentA = async () => {
-    try {
-      const response = await axiosInstance.get("/meta/anilist/recent-episodes");
-      SetisLoading(true);
-      if (response.data.results) {
-        SetrecentAnime(response.data.results);
-        SetrandomAnime(response.data.results.slice(5, 10));
-      }
-      console.log("error API");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      SetisLoading(false);
+const fetchAnime = async (endpoint) => {
+  let isLoading = true;
+  try {
+    const response = await axiosInstance.get(endpoint);
+    if (response.data.results) {
+      isLoading = false;
+      return { data: response.data.results, isLoading };
+    } else {
+      throw new Error("Failed to fetch anime");
     }
-  };
-  const fetchTrendingA = async () => {
-    try {
-      const response = await axiosInstance.get("/meta/anilist/trending");
-      SetisLoading(true);
-      if (response.data.results) {
-        SettrendingAnime(response.data.results);
-      }
-      console.log("error API");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      SetisLoading(false);
+  } catch (error) {
+    isLoading = false;
+    alert(error);
+    return;
+    {
+      data: null, isLoading;
     }
-  };
+  }
+};
 
-  const fetchPopularA = async () => {
-    try {
-      const response = await axiosInstance.get("/meta/anilist/popular");
-      SetisLoading(true);
-      if (response.data.results) {
-        SetpopularAnime(response.data.results);
-      }
-      console.log("error API");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      SetisLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchRecentA();
-    fetchTrendingA();
-    fetchPopularA();
-  }, []);
+const Home = async () => {
+  const { data: recentAnime } = await fetchAnime(RECENT_ANIME);
+  const { data: trendingAnime } = await fetchAnime(TRENDING_ANIME);
+  const { data: popularAnime } = await fetchAnime(POPULAR_ANIME);
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] min-h-screen  bg-gray-900 overflow-hidden">
       <Header isScrolled={""} />
       <main className="max-w-[100vw] ">
-        {recentAnime && popularAnime && trendingAnime ? 
+        {recentAnime && popularAnime && trendingAnime && (
           <>
             <ul>
-          <Emblacarousel animeList={animeList} />
-        </ul>
+              <Emblacarousel animeList={popularAnime} />
+            </ul>
 
-        <Card cardTitle={"Trending"} />
+            <Scrollfunction anime={trendingAnime} />
 
-        <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[600px] px-5 pb-10">
-          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw] ">
-            <ListCard
-              cardTitle={"Recent Rlease"}
-              anime={recentAnime}
-              isLoading={isLoading}
-            />
-            <ListCard
-              cardTitle={"Popular"}
-              anime={popularAnime}
-              isLoading={isLoading}
-            />
-            <ListCard
-              cardTitle={"Trending"}
-              anime={trendingAnime}
-              isLoading={isLoading}
-            />
-            <ListCard
-              cardTitle={"Random Anime"}
-              anime={randomAnime}
-              isLoading={isLoading}
-            />
-          </div>
-        </div>
+            <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[600px] px-5 pb-10">
+              <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw] ">
+                <ListCard cardTitle={"Recent Rlease"} anime={recentAnime} />
+                <ListCard cardTitle={"Popular"} anime={popularAnime} />
+                <ListCard cardTitle={"Trending"} anime={trendingAnime} />
+                <ListCard
+                  cardTitle={"Random Anime"}
+                  anime={recentAnime.slice(5, 10)}
+                />
+              </div>
+            </div>
 
-        <Recentepisode />
-          </>  : <Loading />
-      }
+            <Recentepisode
+              recentAnime={recentAnime}
+              popularAnime={popularAnime}
+            />
+          </>
+        )}
       </main>
       <Footer />
     </div>
