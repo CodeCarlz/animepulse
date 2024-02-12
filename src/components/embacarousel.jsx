@@ -1,12 +1,12 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Cover from "./cover";
 import Button from "./button";
 import { MdNavigateNext } from "react-icons/md";
 
-const Emblacarousel = ({ children, animeList }) => {
+const Emblacarousel = ({ animeList }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   const scrollPrev = useCallback(() => {
@@ -15,7 +15,6 @@ const Emblacarousel = ({ children, animeList }) => {
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
-    emblaApi.autoplay();
   }, [emblaApi]);
 
   return (
