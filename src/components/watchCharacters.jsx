@@ -9,8 +9,8 @@ const Watchcharacters = ({ animeInfo }) => {
   const [active, SetActive] = useState("Character");
 
   return (
-    <div className=" h-full w-screen px-1 sm:px-5 md:px-6  mt-10 pt-2">
-      <div className="flex  justify-center items-center gap-2 bg-gray-700 max-w-[250px] p-2 rounded-lg">
+    <div className="h-full w-screen px-1  mt-10 pt-2">
+      <div className="flex ml-5 md:ml-9 lg:ml-6 xl:ml-10 justify-center items-center gap-2 bg-gray-700 max-w-[250px] p-2 rounded-lg">
         <Button
           variant={"watchButton"}
           className={`text-lg ${active === "Character" ? "bg-pink-600" : ""}`}
@@ -27,13 +27,13 @@ const Watchcharacters = ({ animeInfo }) => {
         </Button>
       </div>
       <div
-        className=" w-screen md:w-[95vw] ml-0 mt-5 gap-x-4 gap-y-10  grid grid-cols-4  
+        className="mx-auto w-[90vw] lg:w-[95vw] mt-5 gap-x-4 gap-y-10  grid grid-cols-4  
       sm:grid-cols-5  
       md:grid-cols-4  
       lg:grid-cols-5  
       xl:grid-cols-6  
       2xl:grid-cols-7 
-      mb-5 pb-10
+      mb-5 pb-4
       "
         style={{ gridAutoRows: "minmax(0, auto)" }}
       >
