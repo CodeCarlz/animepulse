@@ -5,22 +5,37 @@ import Recentepisode from "@/components/recentEpisode";
 import Watchanimeinfo from "@/components/watchAnimeInfo";
 import Watchcharacters from "@/components/watchCharacters";
 import Watchepisode from "@/components/watchEpisode";
-import { animeInfo } from "@/utils/animeInfo";
+import { axiosInstance } from "@/services/api";
+import { INFO_ANIME } from "@/services/endpoint";
 import React from "react";
 
-const page = ({ params }) => {
+const page = async ({ params }) => {
   const { id, anime } = params;
-  console.log(animeInfo);
+
+  const fetchAnime = async (endpoint) => {
+    try {
+      const response = await axiosInstance.get(`${endpoint}/${id}`);
+      if (response.data) {
+        return response.data;
+      } else {
+        throw new Error("Failed to fetch anime");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const animeInfo = await fetchAnime(INFO_ANIME);
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
       <Header isScrolled={"bg-gradient-to-t from-pink-900"} />
-      <main>
+      <main className="h-full">
         <div className="pt-[50px] lg:pt-[70px] flex justify-center">
-          <div className=" h-[1800px] md:h-[1600px] lg:h-[1320px] xl:h-[750px] w-[95vw] flex flex-col xl:flex-row gap-5">
+          <div className=" h-full  xl:h-[750px] w-[95vw] flex flex-col xl:flex-row gap-5">
             <div className="flex flex-col-reverse xl:flex-row gap-1 3xl:w-[80vw]">
               {/* list of episode*/}
-              <Watchepisode id={id} />
+              <Watchepisode id={id} animeInfo={animeInfo} />
               {/* video player */}
               <div className="bg-gray-700 flex-1 flex flex-col">
                 <div className="bg-red-400 h-[70vh]">
@@ -36,10 +51,10 @@ const page = ({ params }) => {
               </div>
             </div>
             {/* anime details */}
-            <Watchanimeinfo />
+            <Watchanimeinfo animeInfo={animeInfo} />
           </div>
         </div>
-        <Watchcharacters />
+        <Watchcharacters animeInfo={animeInfo} />
       </main>
       <Footer />
     </div>
