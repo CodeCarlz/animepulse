@@ -1,5 +1,4 @@
 import React from "react";
-import { animeInfo } from "@/utils/animeInfo";
 import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import Button from "@/components/button";
