@@ -1,24 +1,43 @@
 import React from "react";
-import { animeInfo } from "@/utils/animeInfo";
+// import { animeInfo } from "@/utils/animeInfo";
+import Image from "next/image";
 
-const Watchanimeinfo = () => {
-  const dateFormat = new Date(
-    animeInfo.startDate.year,
-    animeInfo.startDate.month - 1,
-    animeInfo.startDate.day
-  ).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+const Watchanimeinfo = ({ animeInfo }) => {
+  const dateFormat = animeInfo?.startDate
+    ? new Date(
+        animeInfo?.startDate.year,
+        animeInfo?.startDate.month - 1,
+        animeInfo?.startDate.day
+      ).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "";
+
   return (
-    <div className="bg-gray-700  xl:w-[450px] flex flex-col text-sm">
-      <div className="h-[380px] md:h-[250px] xl:h-[430px] flex flex-col md:flex-row xl:flex-col gap-3 md:items-center text-white">
-        <div className="h-[230px] max-w-[150px] bg-gray-800 flex justify-center">
-          <img src="/one_piece.jpg" alt="" className="h-full w-screen" />
-        </div>
-        <div className=" h-[70px] flex flex-col gap-2 px-2">
-          <p className="text-2xl text-pink-600">{animeInfo.title.english}</p>
+    <div
+      className="bg-gray-700 h-[550px] flex flex-col gap-2 sm:gap-5 xl:gap-2 text-sm px-2
+    sm:flex-row sm:h-[400px]
+    md:h-[300px]
+    xl:flex-col xl:h-full xl:w-[500px]
+    "
+    >
+      <div className="bg-red-500 h-[250px] w-full  sm:w-[150px] xl:w-full overflow-hidden">
+        <Image
+          height="100"
+          width="100"
+          src="/one_piece.jpg"
+          alt=""
+          className="h-full w-full"
+        />
+      </div>
+      <div
+        className=" h-full w-full gap-5 flex flex-col sm:flex-col text-white
+      "
+      >
+        <div>
+          <p className="text-2xl text-pink-600">{animeInfo?.title.english}</p>
           <div className="flex gap-2 text-sm">
             <p>PG-13</p>
             <div className="flex">
@@ -31,39 +50,43 @@ const Watchanimeinfo = () => {
           </div>
           <div className="">
             <p className="text-[12px] text-gray-400">
-              {animeInfo.description.slice(0, 190)}
-              {animeInfo.description.length > 190 ? <span>...</span> : ""}
+              {animeInfo?.description?.length >= 190
+                ? `${animeInfo?.description.slice(0, 190)}...`
+                : animeInfo?.description}
             </p>
           </div>
         </div>
-      </div>
-      <div className="text-white flex flex-col md:flex-row md:justify-center xl:justify-start xl:flex-col md:gap-10 xl:gap-0 flex-1 px-2">
-        <div>
-          <div className="flex gap-1 items-start">
-            <p className="text-pink-600">Type:</p>
-            <p className="">TV</p>
-          </div>
-
-          <div className="flex gap-1 items-start">
-            <p className="text-pink-600">Date aired:</p>
-            <p className="">{dateFormat}</p>
-          </div>
-          <div className="flex gap-1 items-start">
-            <p className="text-pink-600">Status:</p>
-            <p className="">{animeInfo.status}</p>
-          </div>
-          <div className="flex gap-1 items-start">
-            <p className="text-pink-600">Genre:</p>
-            {animeInfo.genres.map((element, index) => (
-              <p key={index}>{element}</p>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row lg:gap-5 xl:flex-col 2xl:gap-0">
+        <div
+          className="flex flex-col md:gap-12 md:flex-row xl:flex-col xl:gap-0
+        "
+        >
           <div className="">
             <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Type:</p>
+              <p className="">TV</p>
+            </div>
+
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Date aired:</p>
+              <p className="">{dateFormat}</p>
+            </div>
+
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Status:</p>
+              <p className="">{animeInfo?.status}</p>
+            </div>
+            <div className="flex gap-1 items-start">
+              <p className="text-pink-600">Genre:</p>
+              {animeInfo?.genres.map((element, index) => (
+                <p key={index}>{element}</p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="flex gap-1 items-start">
               <p className="text-pink-600">Country:</p>
-              <p className="">{animeInfo.countryOfOrigin}</p>
+              <p className="">{animeInfo?.countryOfOrigin}</p>
             </div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Scores:</p>
@@ -71,21 +94,19 @@ const Watchanimeinfo = () => {
             </div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Premiered:</p>
-              <p className="">{animeInfo.releaseDate}</p>
+              <p className="">{animeInfo?.releaseDate}</p>
             </div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Duration:</p>
-              <p className="">{animeInfo.duration} min</p>
+              <p className="">{animeInfo?.duration} min</p>
             </div>
-          </div>
-          <div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Episode:</p>
-              <p className="">{animeInfo.totalEpisodes}</p>
+              <p className="">{animeInfo?.totalEpisodes}</p>
             </div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Studios:</p>
-              <p className="">{animeInfo.studios}</p>
+              <p className="">{animeInfo?.studios}</p>
             </div>
             <div className="flex gap-1 items-start">
               <p className="text-pink-600">Producer:</p>

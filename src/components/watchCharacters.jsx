@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Button from "./button";
-import { animeInfo } from "@/utils/animeInfo";
-import Card from "./card";
 import Image from "next/image";
-console.log(animeInfo.characters);
+import Scrollfunction from "./scrollFunction";
+import { trendingData } from "@/utils/trendingData";
 
-const Watchcharacters = () => {
+const Watchcharacters = ({ animeInfo }) => {
   const [active, SetActive] = useState("Character");
 
   return (
@@ -34,16 +33,9 @@ const Watchcharacters = () => {
       lg:grid-cols-5 lg:grid-rows-6 lg:h-[1300px]
       xl:grid-cols-6 xl:grid-rows-5 xl:h-[1100px]
       2xl:grid-cols-7 2xl:grid-rows-4 2xl:h-[1000px]
-
       "
       >
-        {/* {
-          h-[100px] w-[100px] hover:h-[110px] hover:w-[110px]
-          md:w-[150px] md:h-[150px] md:hover:w-[160px]  md:hover:h-[160px]
-            lg:w-[180px] lg:h-[180px] lg:hover:w-[190px]  lg:hover:h-[190px]
-            2xl:w-[200px] 2xl:h-[200px] 2xl:hover:w-[210px]  2xl:hover:h-[210px]
-        } */}
-        {animeInfo.characters.map((element, index) => (
+        {animeInfo?.characters.map((element, index) => (
           <div
             className={` text-white hover:text-pink-600
             max-h-[100px] 
@@ -58,7 +50,7 @@ const Watchcharacters = () => {
               className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
             >
               <Image
-                src={element.image}
+                src={element?.image}
                 width="100"
                 height="100"
                 alt=""
@@ -66,23 +58,27 @@ const Watchcharacters = () => {
               />
               <p
                 className={`absolute top-0 right-0 text-[12px] rounded-bl-lg ${
-                  element.role.toLowerCase() === "main"
+                  element?.role.toLowerCase() === "main"
                     ? "bg-pink-600 px-2"
-                    : element.role.toLowerCase() === "supporting"
+                    : element?.role.toLowerCase() === "supporting"
                     ? "bg-green-600 px-1"
                     : ""
                 }`}
               >
-                {element.role}
+                {element?.role}
               </p>
             </div>
             <div className="flex justify-center">
-              <p className="text-nowrap">{element.name.first}</p>
+              <p className="text-nowrap">
+                {element?.name.first.length > 9
+                  ? element?.name.first.slice(0, 8)
+                  : element?.name.first}
+              </p>
             </div>
           </div>
         ))}
       </div>
-      <Card cardTitle={"Recommendation"} />
+      <Scrollfunction anime={trendingData.results} />
     </div>
   );
 };

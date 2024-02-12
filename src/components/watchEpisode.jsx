@@ -4,9 +4,9 @@ import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import Button from "@/components/button";
 
-const Watchepisode = ({ id }) => {
+const Watchepisode = ({ id, animeInfo }) => {
   return (
-    <div className="bg-gray-700 min-h-[500px] lg:min-h-[300px] xl:w-[300px]">
+    <div className="bg-gray-700 h-full ">
       <div className="bg-gray-800 h-[70px] px-4">
         <div className="text-lg text-white ">List of Episode</div>
         <div className="flex justify-between items-center">
@@ -17,9 +17,9 @@ const Watchepisode = ({ id }) => {
               id=""
               className="w-[70px] h-[20px] bg-gray-700 text-white text-end pr-2"
             >
-              {animeInfo.episodes.map((element, index) => (
+              {animeInfo?.episodes.map((element, index) => (
                 <option value="" key={index}>
-                  {element.number}
+                  {element?.number}
                 </option>
               ))}
             </select>
@@ -34,17 +34,17 @@ const Watchepisode = ({ id }) => {
           </div>
         </div>
       </div>
-      <div className=" h-full p-2">
-        <div className="grid grid-cols-5 gap-1">
-          {animeInfo.episodes.map((element, index) => (
-            <Link href={`${element.number.toString()}`} key={index}>
+      <div className=" h-full max-h-[300px] xl:max-h-full p-2 overflow-y-auto scrollDesign">
+        <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-10 xl:grid-cols-5 gap-1">
+          {animeInfo?.episodes.map((element, index) => (
+            <Link href={`${element?.number.toString()}`} key={index}>
               <Button
                 variant={"nextButton"}
                 className={`${
-                  Number(id) === element.number ? "text-pink-600" : ""
+                  Number(id) === element?.number ? "text-pink-600" : ""
                 } w-full`}
               >
-                {element.number}
+                {element?.number}
               </Button>
             </Link>
           ))}
