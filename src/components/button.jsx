@@ -9,7 +9,8 @@ const buttonVariants = cva(
       variant: {
         primary: "text-white transition-colors bg-red-500 bg-pink-600 z-10",
         secondary: "text-white",
-        nextButton: "bg-gray-800 opacity-80 text-white  rounded-md",
+        nextButton:
+          "bg-gray-800 opacity-80 text-white  rounded-md hover:bg-pink-600",
         watchButton:
           "bg-gray-800 px-2 py-1 rounded-lg text-xl w-[100px] text-white",
       },
