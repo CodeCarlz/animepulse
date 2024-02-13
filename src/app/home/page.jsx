@@ -48,7 +48,7 @@ const Home = async () => {
               <Emblacarousel animeList={popularAnime} />
             </ul>
 
-            <Scrollfunction anime={trendingAnime} />
+            <Scrollfunction anime={trendingAnime} title={"Trending"} />
 
             <div className=" flex justify-center items-center h-[2200px] md:h-[1100px] lg:h-[600px] px-5 pb-10">
               <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw] ">
