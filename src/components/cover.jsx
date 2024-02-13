@@ -8,13 +8,14 @@ const Cover = ({ element }) => {
   return (
     <>
       <div
-        className="relative h-[600px] pb-10 px-10 justify-between flex items-end bg-cover bg-center bg-no-repeat max-w-[100vw]"
+        className="relative h-[600px] pb-10  justify-between flex items-end bg-cover bg-center bg-no-repeat "
         style={{ backgroundImage: `url("${element.cover}")` }}
       >
         <div className="absolute inset-0 bg-gradient-to-tr from-gray-900 to-transparent z-3 "></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-gray-900 to-transparent z-3 "></div>
         <div
-          className="z-10 min-w-[300px] w-2/4 flex flex-col justify-end gap-5 p-3
+          className="z-10  w-2/4 flex flex-col justify-end gap-5 pl-3 md:pl-5 lg:pl-10
+          transition-transform duration-1000 ease-in-out
       "
         >
           <h1 className="text-green-400 text-xl lg:text-3xl">
@@ -44,26 +45,14 @@ const Cover = ({ element }) => {
             </label>
 
             <label htmlFor="">
-              <p className="text-white bg-gray-800 p-1 rounded-lg text-pink-700">
+              <p className=" bg-gray-800 p-1 rounded-lg text-pink-700">
                 {element.status}
               </p>
             </label>
           </div>
           <div className="h-[10ch]">
-            <p className=" max-h-[8ch] max-w-[98%] text-overflow-ellipsis  overflow-ellipsis line-clamp-3 text-gray-300 text-[13px] lg:text-md">
-              Gold Roger was known as the Pirate King, the strongest and most
-              infamous being to have sailed the Grand Line. The capture and
-              death of Roger by the World Government brought a change throughout
-              the world. His last words before his death revealed the location
-              of the greatest treasure in the world, One Piece. It was this
-              revelation that brought about the Grand Age of Pirates Gold Roger
-              was known as the Pirate King, the strongest and most infamous
-              being to have sailed the Grand Line. The capture and death of
-              Roger by the World Government brought a change throughout the
-              world. His last words before his death revealed the location of
-              the greatest treasure in the world, One Piece. It was this
-              revelation that brought about the Grand Age of Pirates{" "}
-              <span className="">...</span>
+            <p className=" max-h-[10ch] md:max-h-[8ch] max-w-[98%] text-overflow-ellipsis  line-clamp-4 lg:line-clamp-3 text-gray-300 text-[13px] lg:text-md">
+              {element.description.replace(/<br\s*\/?>/g, "")}
             </p>
           </div>
           <Link href={"#"}>
