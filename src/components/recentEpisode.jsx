@@ -1,19 +1,19 @@
 const Recentepisode = ({ recentAnime, popularAnime }) => {
   return (
-    <div className="relative grid grid-rows-[1fr_800px] lg:grid-cols-[1fr_600px] gap-20 lg:gap-2  lg:h-[800px] px-2">
+    <div className="relative grid grid-rows-[1fr_800px] lg:grid-cols-[1fr_600px] gap-20 lg:gap-2  lg:h-[800px] px-2 ">
       <div className=" flex flex-col gap-2 h-full ">
         <p className=" text-2xl text-pink-600">Recent Episode</p>
         <div
-          className=" text-white  h-[1200px] w-[92vw] 
+          className=" text-white  h-[1200px] w-[95vw] 
         grid grid-cols-2 
-        sm:grid-cols-2  sm:h-[1200px] sm:w-[95vw]
+        sm:grid-cols-2  sm:h-[1200px] 
         md:grid-cols-5  md:h-[650px]
         lg:grid-cols-5  lg:h-[740px] lg:w-[70vw]
         gap-2"
         >
           {recentAnime?.slice(0, 10).map((element, index) => (
             <div
-              className=" text-white flex flex-col h-[200px] sm:h-[220px]  md:h-[300px] lg:h-[365px] "
+              className=" text-white flex flex-col h-[230px]  md:h-[310px] lg:h-[365px] "
               key={index}
             >
               <div className="h-full w-full overflow-hidden relative ">
