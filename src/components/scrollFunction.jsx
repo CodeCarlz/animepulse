@@ -5,7 +5,7 @@ import Button from "./button";
 
 import Card from "./card";
 
-const Scrollfunction = ({ anime }) => {
+const Scrollfunction = ({ anime, title }) => {
   const scrollContainerRef = useRef(null);
 
   const scrollLeft = () => {
@@ -28,7 +28,7 @@ const Scrollfunction = ({ anime }) => {
 
   return (
     <div className="relative max-w-[full]  text-white h-[25rem] flex justify-start items-center gap-2 md:gap-4 lg:gap-6 transition delay-5000 overflow-hidden">
-      <p className="absolute top-1 left-7 text-pink-600 text-3xl">Trending</p>
+      <p className="absolute top-1 left-7 text-pink-600 text-3xl">{title}</p>
       {!anime ? (
         ""
       ) : (
