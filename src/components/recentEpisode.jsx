@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Recentepisode = ({ recentAnime, popularAnime }) => {
   return (
     <div className="relative grid grid-rows-[1fr_800px] lg:grid-cols-[1fr_600px] gap-20 lg:gap-2  lg:h-[800px] px-2 ">
@@ -12,7 +14,11 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
         gap-2"
         >
           {recentAnime?.slice(0, 10).map((element, index) => (
-            <div
+            <Link
+              href={`/watch/${element?.title.english
+                .replace(/\s/g, "-")
+                .replace(/.*: /, "")
+                .toLocaleLowerCase()}/${element?.id}`}
               className=" text-white flex flex-col h-[230px]  md:h-[310px] lg:h-[365px] "
               key={index}
             >
@@ -34,7 +40,7 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
                   {element.type} . Oct 01, 2023
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -42,7 +48,14 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
         <h1 className="text-2xl text-pink-600">Most Viewed</h1>
         <div className=" flex flex-col gap-3 bg-gray-800 py-2">
           {popularAnime?.slice(0, 8).map((element, index) => (
-            <div key={index} className="flex gap-3 ml-2 min-w-[230px]">
+            <Link
+              href={`/watch/${element?.title.english
+                .replace(/\s/g, "-")
+                .replace(/.*: /, "")
+                .toLocaleLowerCase()}/${element?.id}`}
+              key={index}
+              className="flex gap-3 ml-2 min-w-[230px]"
+            >
               <div className="flex flex-col justify-center">
                 <p className="text-2xl font-semibold text-white">
                   0{index + 1}
@@ -71,7 +84,7 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
