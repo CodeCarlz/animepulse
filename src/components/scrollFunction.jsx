@@ -43,14 +43,16 @@ const Scrollfunction = ({ anime, title }) => {
               <Card element={element} index={index} key={index} />
             ))}
           </div>
-          <div className="z-10 flex flex-col gap-3">
-            <Button variant="nextButton" size="xl" onClick={scrollLeft}>
-              <MdNavigateNext />
-            </Button>
-            <Button variant="nextButton" size="xl">
-              <MdNavigateNext className="rotate-180" onClick={scrollRight} />
-            </Button>
-          </div>
+          {anime.length > 6 ? (
+            <div className="z-10 flex flex-col gap-3">
+              <Button variant="nextButton" size="xl" onClick={scrollLeft}>
+                <MdNavigateNext />
+              </Button>
+              <Button variant="nextButton" size="xl">
+                <MdNavigateNext className="rotate-180" onClick={scrollRight} />
+              </Button>
+            </div>
+          ) : null}
         </>
       )}
     </div>
