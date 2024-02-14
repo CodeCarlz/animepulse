@@ -69,11 +69,9 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
               />
               <div className="flex flex-col justify-center text-white">
                 <p className="text-[13px] font-medium max-h-[60px] max-w-[25ch] overflow-hidden">
-                  {element?.title.english
-                    ? element?.title.english
-                    : element?.title.romaji
-                    ? element?.title.romaji
-                    : element?.title.native}
+                  {element.title.english ??
+                    element.title.romaji ??
+                    element.title.native}
                 </p>
                 <div className="flex gap-3 md:gap-4 lg:gap-5 text-[11px] ">
                   <p>{element?.type}</p>

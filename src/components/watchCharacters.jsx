@@ -76,13 +76,12 @@ const Watchcharacters = ({ animeInfo }) => {
                   ? element?.name.first.slice(0, 8)
                   : element?.name.first}
               </p>
-              {console.log(animeInfo.recommendations)}
             </div>
           </div>
         ))}
       </div>
       <Scrollfunction
-        anime={animeInfo.recommendations}
+        anime={animeInfo?.recommendations}
         title={"Recommendation"}
       />
     </div>

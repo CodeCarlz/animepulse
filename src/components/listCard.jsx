@@ -11,11 +11,10 @@ const ListCard = ({ cardTitle, anime, isLoading }) => {
       <div className=" flex flex-col p-2 gap-4">
         {anime?.slice(0, 5).map((element, index) => (
           <Link
-            href={`/watch/${(element?.title?.english
-              ? element?.title?.english
-              : element?.title?.romaji
-              ? element?.title?.romaji
-              : element?.title?.native
+            href={`/watch/${(
+              element.title.english ??
+              element.title.romaji ??
+              element.title.native
             )
               .replace(/.*: /, "")
               .replace(/\s/g, "-")
@@ -32,11 +31,10 @@ const ListCard = ({ cardTitle, anime, isLoading }) => {
             />
             <div className="flex flex-col justify-center text-white">
               <p className="text-lg font-medium max-h-[60px] max-w-[25ch] overflow-hidden">
-                {(element?.title?.english
-                  ? element?.title?.english
-                  : element?.title?.romaji
-                  ? element?.title?.romaji
-                  : element?.title?.native
+                {(
+                  element.title.english ??
+                  element.title.romaji ??
+                  element.title.native
                 ).replace(/.*:/, "")}
               </p>
               <div className="flex gap-3 md:gap-4 lg:gap-5 text-sm ">

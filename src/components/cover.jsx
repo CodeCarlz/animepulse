@@ -9,7 +9,7 @@ const Cover = ({ element }) => {
     <>
       <div
         className="relative h-[600px] pb-10  justify-between flex items-end bg-cover bg-center bg-no-repeat "
-        style={{ backgroundImage: `url("${element.cover}")` }}
+        style={{ backgroundImage: `url("${element?.cover}")` }}
       >
         <div className="absolute inset-0 bg-gradient-to-tr from-gray-900 to-transparent z-3 "></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-gray-900 to-transparent z-3 "></div>
@@ -19,10 +19,12 @@ const Cover = ({ element }) => {
       "
         >
           <h1 className="text-green-400 text-xl lg:text-3xl">
-            #{element.rating} <span className="text-pink-600">Spotlight</span>
+            #{element?.rating} <span className="text-pink-600">Spotlight</span>
           </h1>
           <h1 className="text-white text-2xl lg:text-4xl font-semibold tracking-wide">
-            {element.title.english}
+            {element.title.english ??
+              element.title.romaji ??
+              element.title.native}
           </h1>
           <div className="flex gap-10 ">
             <label htmlFor="" className={"flex items-center gap-1"}>
@@ -52,7 +54,7 @@ const Cover = ({ element }) => {
           </div>
           <div className="h-[10ch]">
             <p className=" max-h-[10ch] md:max-h-[8ch] max-w-[98%] text-overflow-ellipsis  line-clamp-4 lg:line-clamp-3 text-gray-300 text-[13px] lg:text-md">
-              {element.description.replace(/<br\s*\/?>/g, "")}
+              {element?.description.replace(/<br\s*\/?>/g, "")}
             </p>
           </div>
           <Link href={"#"}>

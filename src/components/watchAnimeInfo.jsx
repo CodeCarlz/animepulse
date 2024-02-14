@@ -37,7 +37,11 @@ const Watchanimeinfo = ({ animeInfo }) => {
       "
       >
         <div>
-          <p className="text-2xl text-pink-600">{animeInfo?.title.english}</p>
+          <p className="text-2xl text-pink-600">
+            {animeInfo?.title.english ??
+              animeInfo?.title.romaji ??
+              animeInfo?.title.native}
+          </p>
           <div className="flex gap-2 text-sm">
             <p>PG-13</p>
             <div className="flex">
