@@ -1,11 +1,18 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import Button from "@/components/button";
 import { axiosInstance } from "@/services/api";
 import { WATCH_ANIME } from "@/services/endpoint";
 
-const Watchepisode = async ({ id, animeInfo, fetchAnimeVideo }) => {
+const Watchepisode = ({ id, animeInfo, fetchAnimeVideo }) => {
+  // Callback function to handle the button click
+  const handleButtonClick = async (episodeId) => {
+    await fetchAnimeVideo(episodeId);
+    // Additional logic if needed
+  };
+
   return (
     <div className="bg-gray-700 h-full ">
       <div className="bg-gray-800 h-[70px] px-4">
@@ -43,6 +50,7 @@ const Watchepisode = async ({ id, animeInfo, fetchAnimeVideo }) => {
               className={`${
                 Number(id) === element?.number ? "text-pink-600" : ""
               } w-full`}
+              onClick={() => handleButtonClick(element.id)}
               key={index}
             >
               {element?.number}
