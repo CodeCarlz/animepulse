@@ -53,7 +53,7 @@ const Page = ({ params }) => {
       <Header isScrolled={"bg-gradient-to-t from-pink-900"} />
       <main className="h-full ">
         <div className="pt-[50px] lg:pt-[70px] flex justify-center">
-          <div className=" h-full  xl:h-[750px] w-[95vw] flex flex-col xl:flex-row gap-5">
+          <div className=" h-full  xl:h-[700px] w-[95vw] flex flex-col xl:flex-row gap-5">
             <div className="flex flex-col-reverse xl:flex-row gap-1 3xl:w-[80vw]">
               {/* list of episode*/}
               <Watchepisode
@@ -62,8 +62,8 @@ const Page = ({ params }) => {
                 fetchAnimeVideo={fetchAnimeVideo}
               />
               {/* video player */}
-              <div className="w-full  xl:w-[50vw] 2xl:w-[60vw] bg-gray-700 flex-1 flex flex-col">
-                <div className="w-full h-[70vh] text-white">
+              <div className="w-full   xl:w-[50vw] 2xl:w-[60vw] bg-gray-700 flex-1 flex flex-col">
+                <div className="w-full h-[40vh] md:h-[50vh] lg:h-[70vh] text-white">
                   {/* <img
                     src="/one_piece.jpg"
                     alt=""
