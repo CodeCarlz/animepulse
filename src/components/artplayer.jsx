@@ -4,7 +4,7 @@ import Artplayer from "artplayer";
 import { MdOutlineSubtitles } from "react-icons/md";
 import Hls from "hls.js";
 
-export default function Player({ animeVideo, option, getInstance, ...rest }) {
+function Player({ animeVideo, option, getInstance, ...rest }) {
   const artRef = useRef();
 
   function playM3u8(video, url, art) {
@@ -23,7 +23,7 @@ export default function Player({ animeVideo, option, getInstance, ...rest }) {
   }
 
   let select = [];
-  animeVideo.sources.map((e) => {
+  animeVideo?.sources?.map((e) => {
     if (e.quality === "backup" || e.quality === "default") return;
     select.unshift({
       html: e.quality,
@@ -35,9 +35,9 @@ export default function Player({ animeVideo, option, getInstance, ...rest }) {
     const art = new Artplayer({
       ...option,
       container: artRef.current,
-      url: `${animeVideo.sources[0].url}`,
+      url: animeVideo?.sources[0]?.url,
       // poster: "/one_piece.jpg",
-      volume: 0.5,
+      volume: 1,
       isLive: false,
       muted: false,
       autoplay: false,
@@ -106,3 +106,4 @@ export default function Player({ animeVideo, option, getInstance, ...rest }) {
 
   return <div ref={artRef} {...rest} className="w-full   h-full"></div>;
 }
+export default Player;
