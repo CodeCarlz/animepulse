@@ -21,7 +21,6 @@ const Card = ({ element, index }) => {
             {element.title.english ??
               element.title.romaji ??
               element.title.native}
-            {console.log(element.title)}
           </span>
         </p>
         <p className="text-2xl font-semibold text-green-300 ">{index + 1}</p>
