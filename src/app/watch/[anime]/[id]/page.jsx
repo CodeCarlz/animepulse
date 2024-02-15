@@ -1,3 +1,4 @@
+"use client";
 import Player from "@/components/artplayer";
 import Button from "@/components/button";
 import Footer from "@/components/footer";
@@ -8,41 +9,44 @@ import Watchcharacters from "@/components/watchCharacters";
 import Watchepisode from "@/components/watchEpisode";
 import { axiosInstance } from "@/services/api";
 import { INFO_ANIME, WATCH_ANIME } from "@/services/endpoint";
-import React from "react";
+import { requestHandler } from "@/utils/helpers";
+import { useEffect, useState } from "react";
 
-const page = async ({ params }) => {
+const page = ({ params }) => {
   const { id, anime } = params;
 
-  const fetchAnime = async (endpoint) => {
-    try {
-      const response = await axiosInstance.get(`${endpoint}/${id}`);
-      if (response.data) {
-        return response.data;
-      } else {
-        throw new Error("Failed to fetch anime");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  // Callback function to update the state with the selected episode ID
+  const [animeInfo, setAnimeInfo] = useState(null);
+  const [animeVideo, setAnimeVideo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchAnime = async () => {
+    await requestHandler(
+      async () => await axiosInstance.get(`${INFO_ANIME}/${id}`),
+      async (data) => {
+        setAnimeInfo(data);
+        await fetchAnimeVideo(data.episodes[0].id);
+      },
+      (err) => console.log(err)
+    );
   };
-  const animeInfo = await fetchAnime(INFO_ANIME);
 
   const fetchAnimeVideo = async (EpisodeId) => {
-    try {
-      const response = await axiosInstance.get(
-        `${WATCH_ANIME}/${EpisodeId ? EpisodeId : animeInfo.episodes[0].id}`
-      );
-      if (response.data) {
-        return response.data;
-      } else {
-        throw new Error("Failed to fetch anime");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    setIsLoading;
+    if (!EpisodeId) return;
+    await requestHandler(
+      async () => await axiosInstance.get(`${WATCH_ANIME}/${EpisodeId}`),
+      async (data) => {
+        setAnimeVideo(data);
+      },
+      (err) => console.log(err),
+      setIsLoading
+    );
   };
 
-  const animeVideo = await fetchAnimeVideo();
+  useEffect(() => {
+    fetchAnime();
+  }, [id]);
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
@@ -65,12 +69,12 @@ const page = async ({ params }) => {
                     alt=""
                     className="w-screen h-full"
                   /> */}
-                  <Player animeVideo={animeVideo} />
+                  {animeVideo && !isLoading && (
+                    <Player animeVideo={animeVideo} />
+                  )}
                 </div>
                 <div className="">
-                  <p className="text-white">
-                    {animeInfo?.title.english} {animeInfo?.title?.romaji}
-                  </p>
+                  <p className="text-white">{animeInfo?.title.english}</p>
                 </div>
               </div>
             </div>
