@@ -73,8 +73,10 @@ const Page = ({ params }) => {
                     <Player animeVideo={animeVideo} />
                   )}
                 </div>
-                <div className="">
-                  <p className="text-white">{animeInfo?.title.english}</p>
+                <div className=" h-[50px] flex justify-center items-center">
+                  <p className="text-pink-600 text-3xl">
+                    {animeInfo?.title.english}
+                  </p>
                 </div>
               </div>
             </div>
