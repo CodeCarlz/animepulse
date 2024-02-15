@@ -37,7 +37,7 @@ const Watchcharacters = ({ animeInfo }) => {
       "
         style={{ gridAutoRows: "minmax(0, auto)" }}
       >
-        {animeInfo?.characters.map((element, index) => (
+        {animeInfo?.characters?.map((element, index) => (
           <div
             className={` text-white hover:text-pink-600
             max-h-[100px] 
@@ -72,9 +72,9 @@ const Watchcharacters = ({ animeInfo }) => {
             </div>
             <div className="flex justify-center">
               <p className="text-nowrap">
-                {element?.name.first.length > 9
-                  ? element?.name.first.slice(0, 8)
-                  : element?.name.first}
+                {element?.name?.first?.length > 9
+                  ? element?.name?.first.slice(0, 8)
+                  : element?.name?.first}
               </p>
             </div>
           </div>
