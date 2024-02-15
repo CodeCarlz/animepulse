@@ -43,14 +43,18 @@ const Watchepisode = ({ id, animeInfo, fetchAnimeVideo }) => {
         </div>
       </div>
       <div className=" h-full max-h-[300px] xl:max-h-[680px] p-2 overflow-y-auto scrollDesign">
-        <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-10 xl:grid-cols-5 gap-1">
+        <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-10 xl:grid-cols-5 gap-1 ">
           {animeInfo?.episodes.map((element, index) => (
             <Button
               variant={"nextButton"}
               className={`${
-                element.id === selectedEpisodeId ? "text-pink-600" : ""
-              } w-full`}
-              onClick={() => handleButtonClick(element.id)}
+                !selectedEpisodeId
+                  ? "first:text-pink-600"
+                  : element?.id === selectedEpisodeId
+                  ? "text-pink-600"
+                  : ""
+              } w-full `}
+              onClick={() => handleButtonClick(element?.id)}
               key={index}
             >
               {element?.number}
