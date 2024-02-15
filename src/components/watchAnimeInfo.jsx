@@ -27,7 +27,7 @@ const Watchanimeinfo = ({ animeInfo }) => {
         <Image
           height="100"
           width="100"
-          src="/one_piece.jpg"
+          src={animeInfo?.image}
           alt=""
           className="h-full w-full"
         />
