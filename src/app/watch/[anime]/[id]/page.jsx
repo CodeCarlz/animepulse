@@ -12,7 +12,7 @@ import { INFO_ANIME, WATCH_ANIME } from "@/services/endpoint";
 import { requestHandler } from "@/utils/helpers";
 import { useEffect, useState } from "react";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const { id, anime } = params;
 
   // Callback function to update the state with the selected episode ID
@@ -89,4 +89,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
