@@ -69,7 +69,7 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
         {
           html: "Quality",
           width: 150,
-          tooltip: "360p",
+          tooltip: "Default",
           selector: select,
           onSelect: function (item, $dom, event) {
             console.info(item, $dom, event);
