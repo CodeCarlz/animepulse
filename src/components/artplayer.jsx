@@ -35,7 +35,7 @@ export default function Player({ animeVideo, option, getInstance, ...rest }) {
     const art = new Artplayer({
       ...option,
       container: artRef.current,
-      url: `https://www081.vipanicdn.net/streamhls/0789fd4f049c3ca2a49b860ea5d1f456/ep.1.1703882952.360.m3u8`,
+      url: `${animeVideo.sources[0].url}`,
       // poster: "/one_piece.jpg",
       volume: 0.5,
       isLive: false,
