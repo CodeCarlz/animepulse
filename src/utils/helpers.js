@@ -1,4 +1,4 @@
-export const requestHandler = async (api, onSuccess, onError, setIsLoading) => {
+export const RequestHandler = async (api, onSuccess, onError, setIsLoading) => {
   setIsLoading && setIsLoading(true);
   try {
     const response = await api();

@@ -9,7 +9,7 @@ import Watchcharacters from "@/components/watchCharacters";
 import Watchepisode from "@/components/watchEpisode";
 import { axiosInstance } from "@/services/api";
 import { INFO_ANIME, WATCH_ANIME } from "@/services/endpoint";
-import { requestHandler } from "@/utils/helpers";
+import { RequestHandler } from "@/utils/helpers";
 import { useEffect, useState } from "react";
 
 const page = ({ params }) => {
@@ -21,7 +21,7 @@ const page = ({ params }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchAnime = async () => {
-    await requestHandler(
+    await RequestHandler(
       async () => await axiosInstance.get(`${INFO_ANIME}/${id}`),
       async (data) => {
         setAnimeInfo(data);
@@ -34,7 +34,7 @@ const page = ({ params }) => {
   const fetchAnimeVideo = async (EpisodeId) => {
     setIsLoading;
     if (!EpisodeId) return;
-    await requestHandler(
+    await RequestHandler(
       async () => await axiosInstance.get(`${WATCH_ANIME}/${EpisodeId}`),
       async (data) => {
         setAnimeVideo(data);
