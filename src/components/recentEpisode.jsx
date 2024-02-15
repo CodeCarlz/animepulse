@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const Recentepisode = ({ recentAnime, popularAnime }) => {
@@ -62,8 +63,10 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
                 </p>
                 <span className="h-[2px] bg-pink-600"></span>
               </div>
-              <img
+              <Image
                 src={element?.image}
+                height="100"
+                width="100"
                 alt=""
                 className="h-20 rounded-lg max-w-[60px]"
               />
