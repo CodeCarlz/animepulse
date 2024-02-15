@@ -2,8 +2,10 @@ import React from "react";
 import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
 import Button from "@/components/button";
+import { axiosInstance } from "@/services/api";
+import { WATCH_ANIME } from "@/services/endpoint";
 
-const Watchepisode = ({ id, animeInfo }) => {
+const Watchepisode = async ({ id, animeInfo, fetchAnimeVideo }) => {
   return (
     <div className="bg-gray-700 h-full ">
       <div className="bg-gray-800 h-[70px] px-4">
@@ -36,16 +38,15 @@ const Watchepisode = ({ id, animeInfo }) => {
       <div className=" h-full max-h-[300px] xl:max-h-[680px] p-2 overflow-y-auto scrollDesign">
         <div className="grid grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-10 xl:grid-cols-5 gap-1">
           {animeInfo?.episodes.map((element, index) => (
-            <Link href={`${element?.number.toString()}`} key={index}>
-              <Button
-                variant={"nextButton"}
-                className={`${
-                  Number(id) === element?.number ? "text-pink-600" : ""
-                } w-full`}
-              >
-                {element?.number}
-              </Button>
-            </Link>
+            <Button
+              variant={"nextButton"}
+              className={`${
+                Number(id) === element?.number ? "text-pink-600" : ""
+              } w-full`}
+              key={index}
+            >
+              {element?.number}
+            </Button>
           ))}
         </div>
       </div>
