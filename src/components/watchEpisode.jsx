@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { IoIosSearch, IoIosMenu } from "react-icons/io";
 import Link from "next/link";
@@ -8,9 +7,10 @@ import { WATCH_ANIME } from "@/services/endpoint";
 
 const Watchepisode = ({ id, animeInfo, fetchAnimeVideo }) => {
   // Callback function to handle the button click
+  const [selectedEpisodeId, setSelectedEpisodeId] = useState(null);
   const handleButtonClick = async (episodeId) => {
     await fetchAnimeVideo(episodeId);
-    // Additional logic if needed
+    setSelectedEpisodeId(episodeId);
   };
 
   return (
@@ -48,7 +48,7 @@ const Watchepisode = ({ id, animeInfo, fetchAnimeVideo }) => {
             <Button
               variant={"nextButton"}
               className={`${
-                Number(id) === element?.number ? "text-pink-600" : ""
+                element.id === selectedEpisodeId ? "text-pink-600" : ""
               } w-full`}
               onClick={() => handleButtonClick(element.id)}
               key={index}
