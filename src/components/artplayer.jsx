@@ -27,7 +27,7 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
     if (e.quality === "backup" || e.quality === "default") return;
     select.unshift({
       html: e.quality,
-      url: `https://m3u8-proxy-cors-lime.vercel.app/cors?url=${e.url}`,
+      url: `${e.url}`,
     });
   });
 
@@ -35,7 +35,7 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
     const art = new Artplayer({
       ...option,
       container: artRef.current,
-      url: animeVideo?.sources[0]?.url,
+      url: `${animeVideo?.sources[5]?.url ?? animeVideo?.sources[6]?.url}`,
       // poster: "/one_piece.jpg",
       volume: 1,
       isLive: false,
@@ -67,26 +67,13 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
       },
       settings: [
         {
-          width: 100,
           html: "Quality",
-          tooltip: "Auto",
-          icon: `<img width="22" heigth="22" src=""`,
-          selector: [
-            {
-              html: "360P",
-              tooltip: "Show",
-              switch: true,
-              onSwitch: function (item) {
-                item.tooltip = item.switch ? "Hide" : "Show";
-                art.subtitle.show = !item.switch;
-                return !item.switch;
-              },
-            },
-          ],
-          onSelect: function (item) {
-            art.subtitle.switch(item.url, {
-              name: item.html,
-            });
+          width: 150,
+          tooltip: "360p",
+          selector: select,
+          onSelect: function (item, $dom, event) {
+            console.info(item, $dom, event);
+            art.switchQuality(item.url, item.html);
             return item.html;
           },
         },
