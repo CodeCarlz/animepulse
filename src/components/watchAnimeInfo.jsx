@@ -5,9 +5,9 @@ import Image from "next/image";
 const Watchanimeinfo = ({ animeInfo }) => {
   const dateFormat = animeInfo?.startDate
     ? new Date(
-        animeInfo?.startDate.year,
-        animeInfo?.startDate.month - 1,
-        animeInfo?.startDate.day
+        animeInfo?.startDate?.year,
+        animeInfo?.startDate?.month - 1,
+        animeInfo?.startDate?.day
       ).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
@@ -37,10 +37,10 @@ const Watchanimeinfo = ({ animeInfo }) => {
       "
       >
         <div>
-          <p className="text-2xl text-pink-600">
-            {animeInfo?.title.english ??
-              animeInfo?.title.romaji ??
-              animeInfo?.title.native}
+          <p className="text-2xl text-pink-600 ">
+            {animeInfo?.title?.english ??
+              animeInfo?.title?.romaji ??
+              animeInfo?.title?.native}
           </p>
           <div className="flex gap-2 text-sm">
             <p>PG-13</p>
@@ -55,7 +55,7 @@ const Watchanimeinfo = ({ animeInfo }) => {
           <div className="">
             <p className="text-[12px] text-gray-400">
               {animeInfo?.description?.length >= 190
-                ? `${animeInfo?.description.slice(0, 190)}...`
+                ? `${animeInfo?.description?.slice(0, 190)}...`
                 : animeInfo?.description}
             </p>
           </div>
@@ -79,10 +79,13 @@ const Watchanimeinfo = ({ animeInfo }) => {
               <p className="text-pink-600">Status:</p>
               <p className="">{animeInfo?.status}</p>
             </div>
-            <div className="flex gap-1 items-start">
+            <div className="flex gap-1 items-start max-h-[40px] w-full overflow-hidden ">
               <p className="text-pink-600">Genre:</p>
-              {animeInfo?.genres.map((element, index) => (
-                <p key={index}>{element}</p>
+              {animeInfo?.genres?.map((element, index) => (
+                <p key={index}>
+                  {element}
+                  {index !== animeInfo?.genres?.length - 1 && ","}
+                </p>
               ))}
             </div>
           </div>
