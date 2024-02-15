@@ -25,11 +25,12 @@ const page = async ({ params }) => {
       console.log(error);
     }
   };
+  const animeInfo = await fetchAnime(INFO_ANIME);
 
-  const fetchAnimeVideo = async (endpoint) => {
+  const fetchAnimeVideo = async (EpisodeId) => {
     try {
       const response = await axiosInstance.get(
-        `${endpoint}/spy-x-family-episode-1`
+        `${WATCH_ANIME}/${EpisodeId ? EpisodeId : animeInfo.episodes[0].id}`
       );
       if (response.data) {
         return response.data;
@@ -41,8 +42,7 @@ const page = async ({ params }) => {
     }
   };
 
-  const animeInfo = await fetchAnime(INFO_ANIME);
-  const animeVideo = await fetchAnimeVideo(WATCH_ANIME);
+  const animeVideo = await fetchAnimeVideo();
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
@@ -52,7 +52,11 @@ const page = async ({ params }) => {
           <div className=" h-full  xl:h-[750px] w-[95vw] flex flex-col xl:flex-row gap-5">
             <div className="flex flex-col-reverse xl:flex-row gap-1 3xl:w-[80vw]">
               {/* list of episode*/}
-              <Watchepisode id={id} animeInfo={animeInfo} />
+              <Watchepisode
+                id={id}
+                animeInfo={animeInfo}
+                fetchAnimeVideo={fetchAnimeVideo}
+              />
               {/* video player */}
               <div className="w-full  xl:w-[50vw] 2xl:w-[60vw] bg-gray-700 flex-1 flex flex-col">
                 <div className="w-full h-[70vh] text-white">
