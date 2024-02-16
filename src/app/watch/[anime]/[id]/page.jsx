@@ -50,7 +50,10 @@ const Page = ({ params }) => {
 
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
-      <Header isScrolled={"bg-gradient-to-t from-pink-900"} />
+      <Header
+        isScrolled={"bg-gradient-to-t from-pink-900"}
+        scrolledInput={"bg-gradient-to-t from-neutral-300"}
+      />
       <main className="h-full ">
         <div className="pt-[50px] lg:pt-[70px] flex justify-center">
           <div className=" h-full  xl:h-[700px] w-[95vw] flex flex-col xl:flex-row gap-5">
