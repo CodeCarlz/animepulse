@@ -4,11 +4,7 @@ import Image from "next/image";
 const Card = ({ element, index }) => {
   return (
     <Link
-      href={`/watch/${(
-        element.title.english ??
-        element.title.romaji ??
-        element.title.native
-      )
+      href={`/watch/${(element.title.romaji ?? element.title.native)
         .replace(/.*: /, "")
         .replace(/\s/g, "-")
         .toLowerCase()}/${element?.id}`}

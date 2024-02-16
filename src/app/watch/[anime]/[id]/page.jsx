@@ -8,7 +8,7 @@ import Watchanimeinfo from "@/components/watchAnimeInfo";
 import Watchcharacters from "@/components/watchCharacters";
 import Watchepisode from "@/components/watchEpisode";
 import { axiosInstance } from "@/services/api";
-import { INFO_ANIME, WATCH_ANIME } from "@/services/endpoint";
+import { INFO_ANIME, INFO_GOGO, WATCH_ANIME } from "@/services/endpoint";
 import { requestHandler } from "@/utils/helpers";
 import { useEffect, useState } from "react";
 
@@ -31,6 +31,16 @@ const Page = ({ params }) => {
     );
   };
 
+  const fetchAnimeGogo = async () => {
+    await requestHandler(
+      async () => await axiosInstance.get(`${INFO_GOGO}/${anime}`),
+      async (data) => {
+        setAnimeInfo(data);
+        await fetchAnimeVideo(data.episodes[0].id);
+      },
+      (err) => console.log(err)
+    );
+  };
   const fetchAnimeVideo = async (EpisodeId) => {
     setIsLoading;
     if (!EpisodeId) return;
@@ -46,8 +56,12 @@ const Page = ({ params }) => {
 
   useEffect(() => {
     fetchAnime();
+    if (!animeInfo) {
+      fetchAnimeGogo();
+    }
   }, [id]);
 
+  console.log(animeInfo);
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
       <Header
