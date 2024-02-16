@@ -71,7 +71,9 @@ const Cover = ({ element }) => {
               .replace(/\s/g, "-")
               .toLowerCase()}/${element?.id}`}
           >
-            <Button>Watch Now</Button>
+            <Button variant={"primary"} size={"sm"}>
+              Watch Now
+            </Button>
           </Link>
         </div>
       </div>
