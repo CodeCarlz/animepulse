@@ -77,7 +77,7 @@ const Page = ({ params }) => {
                   )}
                 </div>
                 <div className=" h-[50px] flex justify-center items-center">
-                  <p className="text-pink-600 text-3xl">
+                  <p className="text-pink-600 text-sm md:text-lg lg:text-3xl">
                     {animeInfo?.title.english}
                   </p>
                 </div>
