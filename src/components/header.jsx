@@ -7,7 +7,7 @@ import Button from "@/components/button";
 import useScrolled from "@/utils/useScrolled";
 import Link from "next/link";
 
-const Header = ({ isScrolled }) => {
+const Header = ({ isScrolled, scrolledInput }) => {
   const scrolled = useScrolled();
 
   return (
@@ -23,12 +23,18 @@ const Header = ({ isScrolled }) => {
         <Link href={"/home"}>
           <img src="/logo.png" alt="" className="h-10 w-48" />
         </Link>
-        <div className="bg-white p-2 rounded-xl hidden lg:flex">
+        <div
+          className={` p-1 rounded-xl hidden lg:flex  ${
+            scrolled
+              ? "bg-gradient-to-t from-neutral-300"
+              : scrolledInput
+              ? scrolledInput
+              : "bg-neutral-400"
+          }`}
+        >
           <input
             type="text"
-            className={`outline-none ${
-              scrolled ? "text-black font-extrabold" : "text-gray-700"
-            } font-medium`}
+            className={`pl-2 outline-none bg-transparent text-black font-semibold `}
           />
           <button className="p-2">
             <FaSearch />
