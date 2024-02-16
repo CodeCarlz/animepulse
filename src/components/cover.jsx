@@ -61,7 +61,16 @@ const Cover = ({ element }) => {
               {element?.description.replace(/<br\s*\/?>/g, "")}
             </p>
           </div>
-          <Link href={"#"}>
+          <Link
+            href={`/watch/${(
+              element.title.english ??
+              element.title.romaji ??
+              element.title.native
+            )
+              .replace(/.*: /, "")
+              .replace(/\s/g, "-")
+              .toLowerCase()}/${element?.id}`}
+          >
             <Button>Watch Now</Button>
           </Link>
         </div>
