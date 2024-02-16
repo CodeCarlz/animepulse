@@ -12,7 +12,7 @@ const Card = ({ element, index }) => {
         .replace(/.*: /, "")
         .replace(/\s/g, "-")
         .toLowerCase()}/${element?.id}`}
-      className="flex h-[300px] w-[300px] min-w-[267px] rounded-xl overflow-hidden ml-2 mr-3"
+      className="flex h-[250px] md:h-[270px] lg:h-[280px] min-w-[267px] rounded-xl overflow-hidden ml-2 mr-3"
       key={index}
     >
       <div className="flex flex-col justify-center items-center gap-2 py-5 bg-gradient-to-r from-gray-700">
