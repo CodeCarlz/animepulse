@@ -23,7 +23,7 @@ const Watchanimeinfo = ({ animeInfo }) => {
     xl:flex-col xl:h-full xl:w-[500px]
     "
     >
-      <div className="bg-red-500 h-[250px] w-full  sm:w-[150px] xl:w-full overflow-hidden">
+      <div className=" h-[250px] w-full  sm:w-[150px] xl:w-full overflow-hidden">
         <Image
           height="100"
           width="100"
