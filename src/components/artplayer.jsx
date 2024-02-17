@@ -42,7 +42,7 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
       muted: false,
       autoplay: false,
       pip: true,
-      autoSize: false,
+      autoSize: true,
       screenshot: true,
       setting: true,
       loop: true,
