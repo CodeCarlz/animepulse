@@ -46,7 +46,7 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
       screenshot: true,
       setting: true,
       loop: true,
-      flip: false,
+      flip: true,
       playbackRate: false,
       aspectRatio: true,
       fullscreen: true,
