@@ -25,7 +25,7 @@ const fetchAnime = async (endpoint) => {
     }
   } catch (error) {
     isLoading = false;
-    alert(error);
+    // alert(error);
     return;
     {
       data: null, isLoading;
