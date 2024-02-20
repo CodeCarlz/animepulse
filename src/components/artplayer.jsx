@@ -35,7 +35,14 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
     const art = new Artplayer({
       ...option,
       container: artRef.current,
-      url: `${animeVideo?.sources[5]?.url ?? animeVideo?.sources[6]?.url}`,
+      url: `${
+        animeVideo?.sources[5]?.url ??
+        animeVideo?.sources[6]?.url ??
+        animeVideo?.sources[0]?.url ??
+        animeVideo?.sources[1]?.url ??
+        animeVideo?.sources[2]?.url ??
+        animeVideo?.sources[3]?.url
+      }`,
       // poster: "/one_piece.jpg",
       volume: 1,
       isLive: false,
