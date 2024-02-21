@@ -38,10 +38,10 @@ function Player({ animeVideo, option, getInstance, ...rest }) {
       url: `${
         animeVideo?.sources[5]?.url ??
         animeVideo?.sources[6]?.url ??
-        animeVideo?.sources[0]?.url ??
-        animeVideo?.sources[1]?.url ??
+        animeVideo?.sources[3]?.url ??
         animeVideo?.sources[2]?.url ??
-        animeVideo?.sources[3]?.url
+        animeVideo?.sources[1]?.url ??
+        animeVideo?.sources[0]?.url
       }`,
       // poster: "/one_piece.jpg",
       volume: 1,
