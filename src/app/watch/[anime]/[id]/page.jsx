@@ -61,7 +61,6 @@ const Page = ({ params }) => {
     }
   }, [id]);
 
-  console.log(animeInfo);
   return (
     <div className="grid grid-rows-[1fr_100px] lg:grid-rows-[1fr_300px] justify-center  min-h-screen   bg-gray-900 overflow-hidden">
       <Header
