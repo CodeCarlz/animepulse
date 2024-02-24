@@ -4,6 +4,7 @@ import Button from "./button";
 import Image from "next/image";
 import Scrollfunction from "./scrollFunction";
 import { trendingData } from "@/utils/trendingData";
+import Link from "next/link";
 
 const Watchcharacters = ({ animeInfo }) => {
   const [active, SetActive] = useState("Character");
@@ -37,48 +38,99 @@ const Watchcharacters = ({ animeInfo }) => {
       "
         style={{ gridAutoRows: "minmax(0, auto)" }}
       >
-        {animeInfo?.characters?.map((element, index) => (
-          <div
-            className={` text-white hover:text-pink-600
+        {active === "Character" ? (
+          <>
+            {animeInfo?.characters?.map((element, index) => (
+              <div
+                className={` text-white hover:text-pink-600
             max-h-[100px] 
             md:max-h-[150px]
             lg:max-h-[180px]
             2xl:max-h-[200px]
             transition-transform ease-in-out duration-300 transform hover:scale-110
             `}
-            key={index}
-          >
-            <div
-              className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
-            >
-              <Image
-                src={element?.image}
-                width="100"
-                height="100"
-                alt=""
-                className="h-full w-full hover:opacity-60"
-              />
-              <p
-                className={`absolute top-0 right-0 text-[12px] rounded-bl-lg ${
-                  element?.role.toLowerCase() === "main"
-                    ? "bg-pink-600 px-2"
-                    : element?.role.toLowerCase() === "supporting"
-                    ? "bg-green-600 px-1"
-                    : ""
-                }`}
+                key={index}
               >
-                {element?.role}
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <p className="text-nowrap">
-                {element?.name?.first?.length > 9
-                  ? element?.name?.first.slice(0, 8)
-                  : element?.name?.first}
-              </p>
-            </div>
-          </div>
-        ))}
+                <div
+                  className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
+                >
+                  <Image
+                    src={element?.image}
+                    width="100"
+                    height="100"
+                    alt=""
+                    className="h-full w-full hover:opacity-60"
+                  />
+                  <p
+                    className={`absolute top-0 right-0 text-[12px] rounded-bl-lg ${
+                      element?.role.toLowerCase() === "main"
+                        ? "bg-pink-600 px-2"
+                        : element?.role.toLowerCase() === "supporting"
+                        ? "bg-green-600 px-1"
+                        : ""
+                    }`}
+                  >
+                    {element?.role}
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <p className="text-nowrap">
+                    {element?.name?.first?.length > 9
+                      ? element?.name?.first.slice(0, 8)
+                      : element?.name?.first}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </>
+        ) : (
+          <>
+            {animeInfo?.relations?.map((element, index) => (
+              <Link
+                href={`/watch/${(element.title.romaji ?? element.title.native)
+                  .replace(/.*: /, "")
+                  .replace(/\s/g, "-")
+                  .toLowerCase()}/${element?.id}`}
+                className={` text-white hover:text-pink-600
+            max-h-[100px] 
+            md:max-h-[150px]
+            lg:max-h-[180px]
+            2xl:max-h-[200px]
+            transition-transform ease-in-out duration-300 transform hover:scale-110
+            `}
+                key={index}
+              >
+                <div
+                  className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
+                >
+                  <Image
+                    src={element?.image}
+                    width="100"
+                    height="100"
+                    alt=""
+                    className="h-full w-full hover:opacity-60"
+                  />
+                  <p
+                    className={`absolute top-0 right-0 text-[12px] rounded-bl-lg ${
+                      element?.relationType.toLowerCase() === "adaptation"
+                        ? "bg-pink-600 px-2"
+                        : element?.relationType.toLowerCase() === "character"
+                        ? "bg-green-600 px-1"
+                        : "bg-red-600 px-1"
+                    }`}
+                  >
+                    {element?.relationType}
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <p className="text-nowrap">
+                    {element?.title?.romaji.slice(0, 25)}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
       <Scrollfunction
         anime={animeInfo?.recommendations}
