@@ -25,7 +25,7 @@ const Page = ({ params }) => {
       async () => await axiosInstance.get(`${INFO_ANIME}/${id}`),
       async (data) => {
         setAnimeInfo(data);
-        await fetchAnimeVideo(data.episodes[0].id);
+        await fetchAnimeVideo(data?.episodes[0]?.id);
       },
       (err) => console.log(err)
     );
@@ -36,7 +36,7 @@ const Page = ({ params }) => {
       async () => await axiosInstance.get(`${INFO_GOGO}/${anime}`),
       async (data) => {
         setAnimeInfo(data);
-        await fetchAnimeVideo(data.episodes[0].id);
+        await fetchAnimeVideo(data?.episodes[0]?.id);
       },
       (err) => console.log(err)
     );
