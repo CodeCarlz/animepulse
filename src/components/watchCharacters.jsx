@@ -54,7 +54,7 @@ const Watchcharacters = ({ animeInfo }) => {
                 <div
                   className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
                 >
-                  <Image
+                  <img
                     src={element?.image}
                     width="100"
                     height="100"
@@ -103,7 +103,7 @@ const Watchcharacters = ({ animeInfo }) => {
                 <div
                   className={`relative h-full bg-zinc-900 rounded-lg overflow-hidden text-white `}
                 >
-                  <Image
+                  <img
                     src={element?.image}
                     width="100"
                     height="100"
