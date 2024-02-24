@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const Header = ({ isScrolled, scrolledInput }) => {
   const scrolled = useScrolled();
 
-  const [inputValue, SetInputValue] = useState(null);
+  const [inputValue, SetInputValue] = useState("");
   const router = useRouter();
 
   const handleSubmit = (e) => {
