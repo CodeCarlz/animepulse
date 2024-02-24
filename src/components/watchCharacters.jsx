@@ -67,7 +67,7 @@ const Watchcharacters = ({ animeInfo }) => {
                         ? "bg-pink-600 px-2"
                         : element?.role.toLowerCase() === "supporting"
                         ? "bg-green-600 px-1"
-                        : ""
+                        : "bg-blue-600 px-1"
                     }`}
                   >
                     {element?.role}
