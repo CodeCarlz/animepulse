@@ -34,7 +34,7 @@ const Page = ({ params }) => {
       <main className="pt-[50px] lg:pt-[70px] px-5 h-[1200px]">
         <div className=" h-full grid grid-cols-5 grid-rows-3 gap-5">
           {searchAnime?.results?.map((element, index) => (
-            <SearchCard element={element} />
+            <SearchCard element={element} key={index} />
           ))}
           {/* {console.log(searchAnime)} */}
         </div>
