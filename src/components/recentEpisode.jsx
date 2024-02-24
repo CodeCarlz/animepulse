@@ -24,7 +24,7 @@ const Recentepisode = ({ recentAnime, popularAnime }) => {
               key={index}
             >
               <div className="h-full w-full overflow-hidden relative ">
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent z-3 "></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent top-44 z-3 "></div>
                 <img src={element.image} alt="" className="h-full w-full " />
                 {/* <p className="absolute left-5 bottom-0 font-extrabold">CC 5</p> */}
                 <p className="absolute right-2 bottom-2 font-bold bg-gray-400  px-2 rounded-lg text-gray-700 text-sm">
