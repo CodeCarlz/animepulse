@@ -22,7 +22,7 @@ const Card = ({ element, index }) => {
         <p className="text-2xl font-semibold text-green-300 ">{index + 1}</p>
       </div>
       <div className="w-full max-h-full object-cover">
-        <Image
+        <img
           src={element?.image}
           height="100"
           width="100"
