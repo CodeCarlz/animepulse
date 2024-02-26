@@ -22,7 +22,7 @@ const Header = ({ isScrolled, scrolledInput }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex h-[50px] lg:h-[50px]  justify-between px-10 ${
+      className={`fixed top-0 left-0 right-0 z-50 flex h-[40px] lg:h-[50px]  justify-between px-10 ${
         scrolled ? "bg-gradient-to-t from-pink-900 header-blur " : isScrolled
       }`}
     >
