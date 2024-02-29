@@ -9,7 +9,7 @@ const ListCard = ({ cardTitle, anime, isLoading }) => {
         {cardTitle}
       </div>
       <div className=" flex flex-col p-2 gap-4">
-        {anime?.slice(0, 5).map((element, index) => (
+        {anime?.map((element, index) => (
           <Link
             href={`/watch/${(
               element.title.english ??
