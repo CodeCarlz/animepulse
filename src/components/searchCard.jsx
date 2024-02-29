@@ -4,7 +4,7 @@ import React from "react";
 const SearchCard = ({ element }) => {
   return (
     <>
-      <div className="text-white flex flex-col">
+      <div className="text-white flex flex-col max-h-[300px]">
         <div className="bg-blue-500 h-full w-full overflow-hidden relative ">
           <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent z-3  top-28"></div>
           <Image
@@ -20,7 +20,7 @@ const SearchCard = ({ element }) => {
           </p>
         </div>
         <div className="h-[60px] bg-gray-800 pl-1 flex flex-col justify-between">
-          <p className="text-[14px] max-h-[32px] leading-4 md:overflow-hidden">
+          <p className="text-[14px] max-h-[32px] leading-4 md:overflow-hidden text-overflow-ellipsis  line-clamp-2">
             {element?.title?.english ??
               element?.title?.romaji ??
               element?.title?.native}
