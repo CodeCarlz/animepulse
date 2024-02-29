@@ -52,9 +52,18 @@ const Home = async () => {
 
             <div className=" flex justify-center items-center h-[2250px] md:h-[1100px] lg:h-[600px] px-5 pb-10">
               <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-[98%] w-[95vw] ">
-                <ListCard cardTitle={"Recent Rlease"} anime={recentAnime} />
-                <ListCard cardTitle={"Popular"} anime={popularAnime} />
-                <ListCard cardTitle={"Trending"} anime={trendingAnime} />
+                <ListCard
+                  cardTitle={"Recent Rlease"}
+                  anime={recentAnime.slice(0, 5)}
+                />
+                <ListCard
+                  cardTitle={"Popular"}
+                  anime={popularAnime.slice(0, 5)}
+                />
+                <ListCard
+                  cardTitle={"Trending"}
+                  anime={trendingAnime.slice(0, 5)}
+                />
                 <ListCard
                   cardTitle={"Random Anime"}
                   anime={recentAnime.slice(5, 10)}
