@@ -19,6 +19,7 @@ const Page = ({ params }) => {
   const [animeInfo, setAnimeInfo] = useState(null);
   const [animeVideo, setAnimeVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [clickEpisode, setClickEpisode] = useState();
 
   const fetchAnime = async () => {
     await requestHandler(
@@ -56,6 +57,13 @@ const Page = ({ params }) => {
 
   useEffect(() => {
     fetchAnime();
+    setClickEpisode(
+      JSON.parse(localStorage.getItem(anime))?.clickEpisode || [
+        {
+          episode: 1,
+        },
+      ]
+    );
     if (!animeInfo) {
       fetchAnimeGogo();
     }
@@ -74,8 +82,11 @@ const Page = ({ params }) => {
               {/* list of episode*/}
               <Watchepisode
                 id={id}
+                anime={anime}
                 animeInfo={animeInfo}
                 fetchAnimeVideo={fetchAnimeVideo}
+                clickEpisode={clickEpisode}
+                setClickEpisode={setClickEpisode}
               />
               {/* video player */}
               <div className="w-full   xl:w-[50vw] 2xl:w-[60vw] bg-gray-700 flex-1 flex flex-col">
