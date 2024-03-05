@@ -19,7 +19,7 @@ const Page = ({ params }) => {
   const [animeInfo, setAnimeInfo] = useState(null);
   const [animeVideo, setAnimeVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [clickEpisode, setClickEpisode] = useState();
+  const [clickEpisode, setClickEpisode] = useState([]);
 
   const fetchAnime = async () => {
     await requestHandler(
