@@ -6,7 +6,7 @@ const SearchCard = ({ element }) => {
     <>
       <div className="text-white flex flex-col max-h-[300px]">
         <div className="bg-blue-500 h-full w-full overflow-hidden relative ">
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent z-3  top-28"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent z-3  top-44"></div>
           <Image
             height="100"
             width="100"
